@@ -90,15 +90,15 @@ body {
 }
 
 .navbar-start .user-logo img {
-    width: 48px;
+    width: 50px;
     height: auto;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 .navbar-start .menu-button img {
     width: 55px;
     height: auto;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 .profile-container {
@@ -121,9 +121,18 @@ body {
 }
 
 .profile-container .user-profile img {
-    width: 50px;
+    width: 60px;
     height: auto;
     flex-direction: row;
+    
+}
+
+.profile-container .user-profile {
+    width: 60px;
+    height: auto;
+    flex-direction: row;
+    margin-right: 20px;
+    margin-left: -600px;
 }
 
 .fitur-dashboard {
