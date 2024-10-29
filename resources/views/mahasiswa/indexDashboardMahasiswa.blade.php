@@ -63,13 +63,13 @@
     </div>
     <div class="fitur-dashboard">
       <div class="registrasi-container">
-        <h3>Registrasi</h3>
+        <h3>Registrasi</h3> 
       </div>
       <div class="akademik-container">
-        <h3>Akademik</h3>
+        <h3>Akademik</h3> 
       </div>
       <div class="jadwalkuliah-container">
-        <h3>Jadwal Kuliah</h3>
+        <h3>Jadwal Kuliah</h3> 
       </div>
     </div>
     <!-- Navbar End -->
