@@ -55,10 +55,10 @@
         <img src="../Assets/user.png" alt="profile-user" />
       </div>
       <div class="user-details">
-        <span class="nama"><p>Nama Dekan</p></span>
+        <span class="nama"><p>Nama Kaprodi</p></span>
         <p>566646453345</p>
         <p>Fakultas Sains dan Matematika</p>
-        <span class="email"><p>namadekan@dekan.co.id</p></span>
+        <span class="email"><p>namakaprodi@kaprodi.co.id</p></span>
       </div>
     </div>
     <div class="fitur-dashboard">
