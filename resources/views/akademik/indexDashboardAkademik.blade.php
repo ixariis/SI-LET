@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css-akademik/styleDashboardAkadedmik.css" />
+    <link rel="stylesheet" href="css-akademik/styleDashboardAkademik.css" />
 
     <!-- Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,13 +62,13 @@
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="registrasi-container">
+      <div class="PerubahanNilai-container">
         <h3>Perubahan Nilai</h3>
       </div>
-      <div class="akademik-container">
+      <div class="RuangKuliah-container">
         <h3>Ruang Kuliah</h3>
       </div>
-      <div class="jadwalkuliah-container">
+      <div class="Penjadwalan-container">
         <h3>Penjadwalan</h3>
       </div>
     </div>
@@ -76,3 +76,4 @@
     <nav></nav>
   </body>
 </html>
+

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\AUTH;
+use Illuminate\Support\Facades\Auth;
 
 class SesiController extends Controller
 {
     function loginpage()
     {
+        if (Auth::check()) {
+            return redirect()->route('login'); // Ganti 'home' dengan route yang sesuai
+        }
         return view('indexLoginPage');
     }
 
@@ -51,7 +54,7 @@ class SesiController extends Controller
             }
             
         }else{
-            return redirect('')->withErrors('Username dan Password') ->withInput();
+            return redirect('loginpage')->withErrors('Username dan Password') ->withInput();
         }
 
     }
