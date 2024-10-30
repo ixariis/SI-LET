@@ -105,8 +105,8 @@
     align-items: center;
     border: 1px solid black;
     display: flex;
-    width: 450px;
-    margin-left: 535px;
+    width: 1000px;
+    margin-left: 40px;
     height: 200px;
     margin-top: 150px;
     position: cover;
@@ -123,14 +123,20 @@
   }
   
   .profile-container .user-details .nama {
+    margin-left: -100px;
     font-weight: 700;
   }
-  
+  .profile-container .user-profile .user-profile {
+    margin-right: -100px;
+  }
+  .profile-container .user-profile .user-details {
+    margin-left: -200px;
+  }
   .profile-container .user-profile img {
     width: 100px;
     height: auto;
     flex-direction: row;
-    margin-right: 20px;
+    margin-left: -300px;
     
   }
   
