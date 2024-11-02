@@ -60,6 +60,12 @@
         <p>S1 Teknik Kimia</p>
         <span class="email"><p>xaviera@gmail.com</p></span>
       </div>
+      <div class="infotambahan">
+        <span class="semester"><p class="smt">Semester</p></span>
+        <p class="right-align">5</p>
+        <span class="IPK"><p class="ipk">IP Komulatif</p></span>
+        <p class="right-align">3.98</p>
+      </div>
     </div>
     <div class="fitur-dashboard">
       <div class="registrasi-container">

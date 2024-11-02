@@ -62,11 +62,11 @@
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="registrasi-container">
-        <h3>Penyetujuan Jadwal Kuliah</h3>
+      <div class="statusperkembanganmahasiswa-container">
+        <h3>Perkembangan Mahasiswa</h3>
       </div>
-      <div class="akademik-container">
-        <h3>Penyetujuan Ruang Kuliah</h3>
+      <div class="pengesahanirsmahasiswa-container">
+        <h3>Pengesahan IRS</h3>
       </div>
     </div>
     <!-- Navbar End -->

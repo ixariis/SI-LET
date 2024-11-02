@@ -62,8 +62,8 @@
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="PenjadwalanJadwalKuliah-container">
-        <h3>Penjadwalan Jadwal Kuliah</h3>
+      <div class="PenjadwalanMataKuliah-container">
+        <h3>Penjadwalan Mata Kuliah</h3>
       </div>
       <div class="VerfikasiIRS-container">
         <h3>Verifikasi IRS</h3>

@@ -129,7 +129,7 @@ body {
   width: 100px;
   height: auto;
   margin-right: 20px;
-  
+
 }
 
 .fitur-dashboard {
@@ -144,7 +144,7 @@ body {
 }
 
 
-.fitur-dashboard .PenjadwalanJadwalKuliah-container h3 {
+.fitur-dashboard .PenjadwalanMataKuliah-container h3 {
     width: 400px;
     height: 100px;
     text-align: center;
