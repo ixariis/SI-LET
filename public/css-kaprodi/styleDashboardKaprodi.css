@@ -105,9 +105,9 @@ body {
   align-items: center;
   border: 1px solid black;
   display: flex;
-  width: 1400px;
-  margin-left: 55px;
-  height: 400px;
+  width: 450px;
+  margin-left: 535px;
+  height: 200px;
   margin-top: 150px;
   position: cover;
   flex-direction: row;
@@ -128,6 +128,8 @@ body {
 .profile-container .user-profile img {
   width: 100px;
   height: auto;
+  margin-right: 20px;
+  
 }
 
 .fitur-dashboard {
@@ -141,45 +143,42 @@ body {
   justify-content: center;
 }
 
-.fitur-dashboard .registrasi-container {
-  border: 1px solid black;
-  width: 450px;
-  height: 150px;
-  text-align: center;
+
+.fitur-dashboard .PenjadwalanJadwalKuliah-container h3 {
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid black;
+    background: linear-gradient(to right, #9bc0a5, #b5d1ba, #d5e4d3);
+    padding: 10px;
+    margin: 0;
+    font-family: "Roboto Mono";
+    font-weight: 550px;
+    letter-spacing: 5px;
+    font-size: 15px;
+    line-height:95px;
+    border-radius: 15px;
+    margin-left: 240px;
+
+
 }
 
-.fitur-dashboard .registrasi-container h3 {
-  border-bottom: 1px solid black;
-  background-color: #9bc0a5;
-  padding: 10px;
-  margin: 0;
-  font-family: "Roboto Mono";
-  font-weight: 550;
-  letter-spacing: 5px;
-  font-size: 20px;
-}
 
-.fitur-dashboard .akademik-container {
-  border: 1px solid black;
-  width: 450px;
-  height: 150px;
-  text-align: center;
-}
 
-.fitur-dashboard .akademik-container h3 {
-  border-bottom: 1px solid black;
-  background-color: #8281c5;
-  padding: 10px;
-  margin: 0;
-  font-family: "Roboto Mono";
-  font-weight: 550;
-  letter-spacing: 5px;
-  font-size: 20px;
-}
-
-.fitur-dashboard .jadwalkuliah-container {
-  border: 1px solid black;
-  width: 450px;
-  height: 150px;
-  text-align: center;
+.fitur-dashboard .VerfikasiIRS-container h3 {
+    width: 400px;
+    height: 100px; 
+    margin-top: 70px;
+    text-align: center;
+    border: 1px solid black;
+    background: linear-gradient(to right, #8281c5, #a5a3d3, #c7c5e0);
+    margin-left: 45px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 0;
+    font-family: "Roboto Mono";
+    font-weight: 550;
+    letter-spacing: 5px;
+    font-size: 20px;
+    line-height:95px;
 }

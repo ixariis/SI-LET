@@ -62,10 +62,10 @@
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="registrasi-container">
-        <h3>Penyetujuan Jadwal Kuliah</h3>
+      <div class="PenjadwalanJadwalKuliah-container">
+        <h3>Penjadwalan Jadwal Kuliah</h3>
       </div>
-      <div class="akademik-container">
+      <div class="VerfikasiIRS-container">
         <h3>Verifikasi IRS</h3>
       </div>
     </div>
