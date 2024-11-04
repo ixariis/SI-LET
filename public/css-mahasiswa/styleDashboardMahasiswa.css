@@ -118,7 +118,7 @@
   .user-details {
     line-height: 1;
     margin-right: -200px;
-    margin-left: -300px;
+    margin-left: -350px;
   }
 
   .infotambahan-container {
@@ -134,7 +134,8 @@
     width: auto; /* Menghapus fixed width agar elemen mengikuti konten */
     margin-bottom: -80px;
     margin-right: -300px; 
-    margin-left: 120px;/* Menambahkan jarak horizontal kecil antara elemen */
+    margin-left: 120px;
+    margin-top: -5px;/* Menambahkan jarak horizontal kecil antara elemen */
   }
   
   .infotambahan .sks, .infotambahan .smt, .infotambahan .ips {
@@ -154,6 +155,7 @@
     height: auto;
     flex-direction: row;
     margin-left: -100px;
+    margin-right: -100px;
   } 
   
   .fitur-dashboard {
