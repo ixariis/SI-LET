@@ -102,51 +102,58 @@
   }
   
   .profile-container {
-    align-items: center;
-    border: 1px solid black;
     display: flex;
-    width: 1000px;
-    margin-left: 40px;
+    border: 1px solid black;
+    width: 1300px;
+    margin-left: 100px;
     height: 200px;
     margin-top: 150px;
-    position: cover;
     flex-direction: row;
+    align-items: center;
     border-radius: 15px;
-    justify-content: center;
-    align-self: center;
     font-family: "Poppins", sans-serif;
+    justify-content: space-around;
   }
   
-  .profile-container .user-details {
-    /* margin-top: -20px; */
+  .user-details {
     line-height: 1;
-    margin-left: -200px;
+    margin-right: -200px;
+    margin-left: -300px;
+  }
 
+  .infotambahan-container {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-bottom: 40px;
+    margin-right: 30px;
+  }
 
+  .infotambahan {
+    text-align: center;
+    width: auto; /* Menghapus fixed width agar elemen mengikuti konten */
+    margin-bottom: -80px;
+    margin-right: -300px; 
+    margin-left: 120px;/* Menambahkan jarak horizontal kecil antara elemen */
+  }
+  
+  .infotambahan .sks, .infotambahan .smt, .infotambahan .ips {
+    font-weight: 700;
   }
 
   .profile-container .user-details .nama {
     font-weight: 700;
   }
-
-  .profile-container .user-details .semester {
+  
+  .infotambahan .sks, .infotambahan .smt, .infotambahan .ipk {
     font-weight: 700;
   }
-
-  .profile-container .semester .smt {
-    font-weight: 700;
-  }
-
-  .profile-container .infotambahan {
-    margin-left: 150px;
-  }
-
+  
   .profile-container .user-profile img {
     width: 100px;
     height: auto;
     flex-direction: row;
-    margin-left: -350px;
-    margin-right: 0;
+    margin-left: -100px;
   } 
   
   .fitur-dashboard {
@@ -159,7 +166,50 @@
     margin-left: 45px;
   }
   
-  
+  /* Container for status cards */
+.status-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: -20px;
+  margin-right: -150px;
+}
+
+/* Style for each card */
+.status-card {
+  background-color: #ccc; /* Abu-abu */
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for title in each card */
+.status-card .title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+/* Style for subtitle in each card */
+.status-card .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Style for icon (optional) */
+.status-card .icon {
+  font-size: 24px;
+  color: #333;
+}
+
   .fitur-dashboard .registrasi-container h3 {
     width: 400px;
     height: 100px;
@@ -176,9 +226,6 @@
     border-radius: 15px;
   }
    
-  
-  
-  
   
   .fitur-dashboard .akademik-container h3 {
     width: 400px;

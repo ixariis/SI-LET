@@ -51,22 +51,54 @@
     </nav>
 
     <div class="profile-container">
+      <!-- Informasi User -->
       <div class="user-profile">
-        <img src="../assets/user.png" alt="profile-user" />
+        <img src="../Assets/user.png" alt="profile-user" />
       </div>
       <div class="user-details">
-        <span class="nama"><p>Xaviera Putri</p></span>
-        <p>24060214442432</p>
+        <p class="nama">Xaviera Putri</p>
+        <p>2406021442432</p>
         <p>S1 Teknik Kimia</p>
-        <span class="email"><p>xaviera@gmail.com</p></span>
+        <p>xaviera@gmail.com</p>
       </div>
-      <div class="infotambahan">
-        <span class="semester"><p class="smt">Semester</p></span>
-        <p class="right-align">5</p>
-        <span class="IPK"><p class="ipk">IP Komulatif</p></span>
-        <p class="right-align">3.98</p>
+    
+      <!-- Bagian Status di atas Info Tambahan -->
+      <div class="status-cards-container">
+        <!-- Status Mahasiswa, IP Kumulatif, SKS -->
+        <div class="status-cards">
+          <div class="status-card">
+            <p class="title">Aktif</p>
+            <p class="subtitle">Status Mahasiswa</p>
+          </div>
+          <div class="status-card">
+            <p class="title">3.1</p>
+            <p class="subtitle">IP Kumulatif</p>
+          </div>
+          <div class="status-card">
+            <p class="title">14</p>
+            <p class="subtitle">SKS</p>
+          </div>
+        </div>
+    
+        <!-- Info Tambahan: Total SKS, Semester, IP Semester -->
+        <div class="infotambahan-container">
+          <div class="infotambahan">
+            <p>Total SKS</p>
+            <p class="sks">130</p>
+          </div>
+          <div class="infotambahan">
+            <p>Semester</p>
+            <p class="smt">5</p>
+          </div>
+          <div class="infotambahan">
+            <p>IP Semester</p>
+            <p class="ips">3.98</p>
+          </div>
+        </div>
       </div>
     </div>
+    
+    
     <div class="fitur-dashboard">
       <div class="registrasi-container">
         <h3>Registrasi</h3> 
