@@ -58,7 +58,7 @@
         <span class="nama"><p>Bruce Wayne</p></span>
         <p>566646453345</p>
         <p>Fakultas Sains dan Matematika</p>
-        <span class="email"><p>namadekan@dekan.co.id</p></span>
+        <span class="email"><p>akubetmen@dekan.co.id</p></span>
       </div>
     </div>
     <div class="fitur-dashboard">

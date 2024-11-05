@@ -57,8 +57,8 @@
       <div class="user-details">
         <span class="nama"><p>Clark Kent</p></span>
         <p>5617212123</p>
-        <p>clarkasoy@akademik.com</p>
-        <span class="email"><p>Fakultas Sains dan Matematika</p></span>
+        <p>Fakultas Sains dan Matematika</p>
+        <span class="email"><p>clarkasoy@akademik.com</p></span>
       </div>
     </div>
     <div class="fitur-dashboard">
