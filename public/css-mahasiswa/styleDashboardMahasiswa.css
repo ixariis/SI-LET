@@ -118,7 +118,7 @@
   .user-details {
     line-height: 1;
     margin-right: -200px;
-    margin-left: -350px;
+    margin-left: -430px;
   }
 
   .infotambahan-container {
@@ -154,8 +154,8 @@
     width: 100px;
     height: auto;
     flex-direction: row;
-    margin-left: -100px;
-    margin-right: -100px;
+    margin-left: -150px;
+    
   } 
   
   .fitur-dashboard {

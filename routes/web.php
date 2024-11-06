@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/dashboard-kaprodi", [KaprodiController::class,"dashboard_kaprodi"]);
     Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]);
     Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]);
+    Route::get("/registrasimhs", [MahasiswaController::class,"registrasi_mahasiswa"]);
+    Route::get("/perubahannilaiakdmk", [AkademikController::class,"perubahannilai_akademik"]);
 });
 
 

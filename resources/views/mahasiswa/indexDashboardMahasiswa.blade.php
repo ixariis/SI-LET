@@ -56,10 +56,10 @@
         <img src="../Assets/user.png" alt="profile-user" />
       </div>
       <div class="user-details">
-        <p class="nama">Xaviera Putri</p>
+        <p class="nama">Wally West</p>
         <p>2406021442432</p>
-        <p>S1 Teknik Kimia</p>
-        <p>xaviera@gmail.com</p>
+        <p>S1 Sastra Inggris</p>
+        <p>kachaawww@gmail.com</p>
       </div>
     
       <!-- Bagian Status di atas Info Tambahan -->

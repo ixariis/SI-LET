@@ -8,7 +8,9 @@ use Illuminate\Suppor\Facades\Auth;
 class MahasiswaController extends Controller
 {
     function dashboard_mahasiswa(){
-        
         return view('mahasiswa/indexDashboardMahasiswa');
+    }
+    function registrasi_mahasiswa(){
+        return view('mahasiswa/indexRegistrasiMahasiswa');
     }
 }
