@@ -40,19 +40,22 @@
      </h3>
     </div>
     <div class="grid grid-cols-4 gap-4 mt-4">
-     <button class="bg-gray-200 p-4 border rounded-md">
-      IRS
-     </button>
-     <button class="bg-gray-200 p-4 border rounded-md">
-      Buat IRS
-     </button>
-     <button class="bg-gray-200 p-4 border rounded-md">
-      KHS
-     </button>
-     <button class="bg-gray-200 p-4 border rounded-md">
-      Transkrip
-     </button>
+    
+        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center" href="{{ route('mahasiswa.lihatIRS') }}">
+            IRS
+        </a>
+        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center" href="{{ route('mahasiswa.buatIRS') }}">
+            Buat IRS
+        </a>
+        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center" href="{{ route('mahasiswa.lihatKHS') }}">
+            KHS
+        </a>
+        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center">
+            Transkrip
+        </a>
+    
     </div>
+    
    </div>
   </div>
  </body>
