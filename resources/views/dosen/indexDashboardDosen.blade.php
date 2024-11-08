@@ -55,18 +55,18 @@
         <img src="../Assets/user.png" alt="profile-user" />
       </div>
       <div class="user-details">
-        <span class="nama"><p>Nama Dosen</p></span>
+        <span class="nama"><p>John Constantine</p></span>
         <p>566646453345</p>
         <p>Fakultas Sains dan Matematika</p>
-        <span class="email"><p>namadosen@dosen.co.id</p></span>
+        <span class="email"><p>contantine@dosen.co.id</p></span>
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="registrasi-container">
-        <h3>Penyetujuan Jadwal Kuliah</h3>
+      <div class="statusperkembanganmahasiswa-container">
+        <h3>Perkembangan Mahasiswa</h3>
       </div>
-      <div class="akademik-container">
-        <h3>Penyetujuan Ruang Kuliah</h3>
+      <div class="pengesahanirsmahasiswa-container">
+        <h3>Pengesahan IRS</h3>
       </div>
     </div>
     <!-- Navbar End -->

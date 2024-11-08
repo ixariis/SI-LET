@@ -1,5 +1,8 @@
 * {
     text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -10,6 +13,7 @@ body {
     min-height: 1000px;
     background-position: center center;
     justify-content: center;
+    font-family: "Poppins", sans-serif;
 }
 
 .navbar-start {
@@ -63,8 +67,6 @@ body {
     margin: 0;
 }
 
-/* Dashboard*/
-
 .navbar-start .navbar-home {
     font-size: 36px;
     color: black;
@@ -101,83 +103,104 @@ body {
     margin-bottom: 35px;
 }
 
-.profile-container {
-    align-items: center;
-    border: 1px solid black;
-    display: flex;
-    width: 450px;
-    margin-left: 535px;
-    height: 200px;
-    margin-top: 150px;
-    position: cover;
-    flex-direction: row;
-    border-radius: 15px;
-    justify-content: center;
-    align-self: center;
-    font-family: "Poppins", sans-serif;
+/* Back Button */
+.back-button {
+    margin-top: 90px;
+    padding: 15px;
 }
 
-.profile-container .user-details {
-    line-height: 0.7;
+.back-button a {
+
+    color: black;
+    font-size: 18px;
 }
 
-.profile-container .user-details .nama {
-    font-weight: 700;
+/* Main Content */
+.main-content {
+    margin-top: -10px;
+    margin-left: 300px;
+    padding: 20px;
+    max-width: 1200px;
+
 }
 
-.profile-container .user-profile img {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.fitur-dashboard {
-    flex-direction: row;
-    gap: 60px;
-    display: flex;
-    position: cover;
-    justify-self: center;
-    margin-top: 100px;
-    margin-left: 45px;
-    justify-content: center;
-}
-
-
-.fitur-dashboard .penyetujuanjadwalkuliah-container h3 {
-    width: 400px;
-    height: 100px;
+h1 {
     text-align: center;
-    border: 1px solid black;
-    background: linear-gradient(to right, #9bc0a5, #b5d1ba, #d5e4d3);
-    padding: 10px;
-    margin: 0;
-    font-family: "Roboto Mono";
-    font-weight: 550;
-    letter-spacing: 5px;
-    font-size: 15px;
-    line-height:95px;
-    border-radius: 15px;
-    margin-left: 230px;
+    margin-bottom: 40px;
 }
 
-
-
-.fitur-dashboard .penyetujuanruangkuliah-container h3 {
-  width: 400px;
-  height: 100px; 
-  margin-top: 70px;
-  text-align: center;
-  border: 1px solid rgb(192, 156, 156);
-  background: linear-gradient(to right, #8281c5, #a5a3d3, #c7c5e0);
-  margin-left: 45px;
-  border-radius: 15px;
-  padding: 10px;
-  margin-top: 0;
-  font-family: "Roboto Mono";
-  font-weight: 550;
-  letter-spacing: 5px;
-  font-size: 17px;
-  line-height:95px;
+.registration-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
 }
 
+.option-card {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f7f7;
+}
 
+.option-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.aktif {
+    background-color: #2ecc71;
+}
+
+.cuti {
+    background-color: #e74c3c;
+}
+
+.info-section {
+    margin-top: 40px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f7f7;
+}
+
+.info-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.info-column h2 {
+    margin-bottom: 20px;
+}
+
+.info-column ul {   
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-column li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.info-column li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}

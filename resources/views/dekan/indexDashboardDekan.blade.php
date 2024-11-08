@@ -55,17 +55,17 @@
         <img src="../Assets/user.png" alt="profile-user" />
       </div>
       <div class="user-details">
-        <span class="nama"><p>Nama Dekan</p></span>
+        <span class="nama"><p>Bruce Wayne</p></span>
         <p>566646453345</p>
         <p>Fakultas Sains dan Matematika</p>
-        <span class="email"><p>namadekan@dekan.co.id</p></span>
+        <span class="email"><p>akubetmen@dekan.co.id</p></span>
       </div>
     </div>
     <div class="fitur-dashboard">
-      <div class="registrasi-container">
+      <div class="penyetujuanjadwalkuliah-container">
         <h3>Penyetujuan Jadwal Kuliah</h3>
       </div>
-      <div class="akademik-container">
+      <div class="penyetujuanruangkuliah-container">
         <h3>Penyetujuan Ruang Kuliah</h3>
       </div>
     </div>

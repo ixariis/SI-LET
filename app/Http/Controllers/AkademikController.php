@@ -10,4 +10,7 @@ class AkademikController extends Controller
     function dashboard_akademik(){
         return view ('akademik/indexDashboardAkademik');
     }
+    function perubahannilai_akademik(){
+        return view ('akademik/indexPerubahanNilaiAkademik');
+    }
 }
