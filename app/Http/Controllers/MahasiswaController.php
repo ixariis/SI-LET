@@ -28,4 +28,8 @@ class MahasiswaController extends Controller
     function buatIRS_mahasiswa(){
         return view('mahasiswa/indexbuatIRSMahasiswa');
     }
+
+    function jadwalkuliah_mahasiswa(){
+        return view('mahasiswa/indexJadwalKuliahMahasiswa');
+    }
 }
