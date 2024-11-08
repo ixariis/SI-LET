@@ -4,11 +4,6 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <style>
-    body {
-             font-family: 'Roboto', sans-serif;
-         }
-   </style>
  </head>
  <header class="bg-[9BC0C0] p-0.5 flex justify-between items-center">
   <div class="flex items-center">
@@ -56,42 +51,45 @@
     </div>
   </div>
  </header>
- <h2 class="text-3xl text-center mb-8">
-  Dashboard
- </h2>
+  <div class="text-center mt-8">
+   <h2 class="text-4xl font-light">
+    Dashboard
+   </h2>
+  </div>
   <div class="flex justify-center mt-8">
-   <div class="border rounded-lg p-4 w-96 text-left">
-    <div class="flex items-center mb-4">
-     <i class="fas fa-user-circle text-4xl mr-4">
-     </i>
-     <div>
-      <h3 class="font-bold">
-       Raihan Wakatobi
-      </h3>
-      <p>
-       566646453345
-      </p>
-      <p>
-       Fakultas Sains dan Matematika
-      </p>
-      <p>
-       aspro12@kaprodi.co.id
-      </p>
-     </div>
-    </div>
+   <div class="border rounded-lg p-6 w-80 text-center mb-7">
+    <i class="fas fa-user-circle text-6xl mb-4">
+    </i>
+    <h3 class="text-xl font-bold">
+     Clark Kent
+    </h3>
+    <p>
+     5617212123
+    </p>
+    <p>
+     Fakultas Sains dan Matematika
+    </p>
+    <p>
+     clarkasoy@akademik.com
+    </p>
    </div>
   </div>
-  <div class="flex justify-center mt-8 space-x-8">
-   <div class="bg-green-200 p-6 w-80 rounded-lg text-center shadow-lg">
-    <p class="text-center text-xl font-bold">
-     Penjadwalan Mata Kuliah
-    </p>
+  <div class="flex justify-center space-x-8">
+   <div class="bg-green-200 p-6 w-80 rounded-lg shadow-lg">
+    <h3 class=" text-xl text-center font-bold">
+    Penjadwalan Mata Kuliah     
+    </h3>
    </div>
-   <div class="bg-[#9bc0a5] p-6  w-80 rounded-lg  text-center shadow-lg">
-    <p class="text-center text-xl font-bold">
-     Verifikasi IRS
-    </p>
+   <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
+    <h3 class=" text-xl text-center font-bold">
+    Verifikasi IRS
+    </h3>
    </div>
   </div>
  </body>
 </html>
+
+
+
+
+
