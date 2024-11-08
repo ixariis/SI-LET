@@ -1,79 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="css-akademik/styleDashboardAkademik.css" />
-
-    <!-- Font Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font Roboto Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body>
-    <!-- Navbar Start -->
-    <nav class="navbar-start">
-      <div class="logo-header">
-        <a class="logo-silet">
-          <img src="../Assets/silet_logo.png" alt="logo" />
-        </a>
-        <div class="logo-text">
-          <span> <p>SI-LET</p> </span>
-          <p class="logo-subtitle">
-            Sistem Informasi & Laporan Edukasi Terintegrasi
-          </p>
-        </div>
-      </div>
-      <div>
-        <a href="#profile" class="navbar-home">Dashboard</a>
-      </div>
-      <div>
-        <a class="user-logo"
-          ><img src="../Assets/user.png" alt="user-logo"
-        /></a>
-        <a href="#" class="menu-button" type="button"
-          ><img src="../Assets/menu-bar.png" alt="menu-button"
-        /></a>
-      </div>
-    </nav>
-
-    <div class="profile-container">
-      <div class="user-profile">
-        <img src="../Assets/user.png" alt="profile-user" />
-      </div>
-      <div class="user-details">
-        <span class="nama"><p>Clark Kent</p></span>
-        <p>5617212123</p>
-        <p>Fakultas Sains dan Matematika</p>
-        <span class="email"><p>clarkasoy@akademik.com</p></span>
+<html>
+ <head>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <header class="bg-[9BC0C0] p-0.5 flex justify-between items-center">
+  <div class="flex items-center">
+   <img alt="SI-LET Logo" class=" h-24 w-24 mr-2" src="assets/silet_logo.png" />
+   <div>
+    <h1 class="text-xl font-bold">
+     SI-LET
+    </h1>
+    <p class="text-sm">
+     Sistem Informasi &amp; Laporan Edukasi Terintegrasi
+    </p>
+   </div>
+  </div>
+  <div class="flex items-center space-x-4 mr-7">
+  <div class="flex items-center space-x-4 mr-7">
+     <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
+     <div class="relative">
+      <img 
+        class="w-14 h-14 cursor-pointer" 
+        src="assets/menu-bar.png" 
+        alt="menubar" 
+        onclick="toggleDropdown()"
+      >
+      <!-- Dropdown Menu -->
+      <div id="dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg">
+        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
       </div>
     </div>
-    <div class="fitur-dashboard">
-      <div class="PerubahanNilai-container">
-        <h3>Perubahan Nilai</h3>
-      </div>
-      <div class="RuangKuliah-container">
-        <h3>Ruang Kuliah</h3>
-      </div>
-      <div class="Penjadwalan-container">
-        <h3>Penjadwalan</h3>
-      </div>
+  
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+  
+      // Menutup dropdown jika pengguna mengklik di luar elemen dropdown
+      window.onclick = function(event) {
+        const dropdown = document.getElementById("dropdown");
+        if (!event.target.closest('img')) { // Pastikan tidak mengklik icon menu bar
+          dropdown.classList.add('hidden'); // Tutup dropdown
+        }
+      }
+    </script>
+     </a>
     </div>
-    <!-- Navbar End -->
-    <nav></nav>
-  </body>
+  </div>
+ </header>
+  <div class="text-center mt-8">
+   <h2 class="text-4xl font-light">
+    Dashboard
+   </h2>
+  </div>
+  <div class="flex justify-center mt-8">
+   <div class="border rounded-lg p-6 w-80 text-center mb-7">
+    <i class="fas fa-user-circle text-6xl mb-4">
+    </i>
+    <h3 class="text-xl font-bold">
+     Clark Kent
+    </h3>
+    <p>
+     5617212123
+    </p>
+    <p>
+     Fakultas Sains dan Matematika
+    </p>
+    <p>
+     clarkasoy@akademik.com
+    </p>
+   </div>
+  </div>
+  <div class="flex justify-center space-x-8">
+   <div class="bg-green-200 p-6 w-80 rounded-lg shadow-lg">
+    <h3 class=" text-xl text-center font-bold">
+    Perubahan Nilai      
+    </h3>
+   </div>
+   <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
+    <h3 class=" text-xl text-center font-bold">
+    Ruang Kuliah
+    </h3>
+   </div>
+   <div class="bg-yellow-200 p-6 w-80 rounded-lg text-center shadow-lg">
+    <h3 class="text-xl text-center font-bold">
+    Penjadwalan
+    </h3>
+   </div>
+  </div>
+ </body>
 </html>
-

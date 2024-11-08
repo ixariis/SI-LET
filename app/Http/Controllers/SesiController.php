@@ -65,5 +65,5 @@ class SesiController extends Controller
         Auth::logout();
         return redirect(route('loginpage'));
     }
-
+  
 }
