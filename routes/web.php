@@ -11,19 +11,20 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Routing\RouteUrlGenerator;
 
 Route::middleware(["guest"])->group(function () {
-    Route::get("/", [SesiController::class,"loginpage"]);
-    Route::post("/", [SesiController::class,"login"]);
+    Route::get("/", [SesiController::class,"loginpage"]) -> name('loginpage');
+    Route::post("/", [SesiController::class,"login"]) -> name('login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
     //Mahasiswa
     Route::get("/dashboard-mahasiswa", [MahasiswaController::class,"dashboard_mahasiswa"]);
-    Route::get("/registrasi-mahasiswa", [MahasiswaController::class,"registrasi_mahasiswa"]);
+    Route::get("/registrasi-mahasiswa", [MahasiswaController::class,"registrasi_mahasiswa"]) -> name('mahasiswa.registrasi');
     Route::get('/pembayaranUKT-mahasiswa', [MahasiswaController::class, "Rpembayaran_mahasiswa"]);
-    Route::get("/akademik-mahasiswa", [MahasiswaController::class, "akademik_mahasiswa"]);
+    Route::get("/akademik-mahasiswa", [MahasiswaController::class, "akademik_mahasiswa"]) -> name('mahasiswa.akademik');
     Route::get('/lihatIRS-mahasiswa', [MahasiswaController::class, "lihatIRS_mahasiswa"]);
     Route::get('/lihatKHS-mahasiswa', [MahasiswaController::class, "lihatKHS_mahasiswa"]);
     Route::get('/buatIRS-mahasiswa', [MahasiswaController::class, "buatIRS_mahasiswa"]);
+    Route::get("jadwalkuliah-mahasiswa", [MahasiswaController::class, "jadwalkuliah_mahasiswa"]) -> name('mahasiswa.jadwalkuliah');
     
     //Dekan
     Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]);
@@ -41,10 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Akademik
     Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]);
     Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]);
+
+    //logout
+    Route::get("/logout", [SesiController::class, "logout"]) -> name('logout');
     
 });
-
-
-
-
-

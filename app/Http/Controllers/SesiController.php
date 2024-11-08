@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SesiController extends Controller
 {
@@ -57,6 +58,12 @@ class SesiController extends Controller
             return redirect('loginpage')->withErrors('Username dan Password') ->withInput();
         }
 
+    }
+
+    function logout(){
+        Session::flush();
+        Auth::logout();
+        return redirect(route('loginpage'));
     }
 
 }

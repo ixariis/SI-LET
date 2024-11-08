@@ -20,7 +20,9 @@
     </div>
     <div class="flex items-center space-x-4 mr-7">
      <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
+     <a href="{{ route('logout') }}">
      <img class= "w-14 h-14" src="assets/menu-bar.png" alt="menubar">
+     </a>
     </div>
    </header>
   <main class="p-8">
@@ -99,22 +101,28 @@
      </div>
     </div>
    </div>
+   <a href="{{ route('mahasiswa.registrasi') }}">
    <div class="grid grid-cols-3 gap-8">
     <div class="bg-green-200 p-6 rounded-lg text-center shadow-lg">
      <h3 class="text-xl font-bold">
       Registrasi
      </h3>
     </div>
+  </a>
+    <a href="{{ route('mahasiswa.akademik')  }}">
     <div class="bg-[#9bc0a5] p-6 rounded-lg text-center shadow-lg">
      <h3 class="text-xl font-bold">
       Akademik
      </h3>
     </div>
+  </a>
+  <a href="{{ route('mahasiswa.jadwalkuliah') }}">
     <div class="bg-yellow-200 p-6 rounded-lg text-center shadow-lg">
      <h3 class="text-xl font-bold">
       Jadwal Kuliah
      </h3>
     </div>
+  </a>
    </div>
   </main>
  </body>
