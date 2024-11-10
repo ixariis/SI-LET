@@ -54,7 +54,7 @@
   <h2 class="text-3xl font-bold text-center mb-8">
     Dashboard
   </h2>
-   <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center mb-8">
+   <div class="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center mb-8">
     <div class="flex items-center space-x-4">
      <div class="h-16 w-16 rounded-full border-2 border-gray-300 flex items-center justify-center  mr-5 ml-16">
       <i class="fas fa-user text-4xl text-gray-500">
