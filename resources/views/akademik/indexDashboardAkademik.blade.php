@@ -18,7 +18,6 @@
    </div>
   </div>
   <div class="flex items-center space-x-4 mr-7">
-  <div class="flex items-center space-x-4 mr-7">
      <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
      <div class="relative">
       <img 
@@ -51,13 +50,12 @@
     </div>
   </div>
  </header>
-  <div class="text-center mt-8">
-   <h2 class="text-4xl font-light">
-    Dashboard
-   </h2>
-  </div>
+ <h2 class="text-3xl font-bold text-center mt-4 mb-5">
+  Dashboard
+ </h2>
+  
   <div class="flex justify-center mt-8">
-   <div class="border rounded-lg p-6 w-80 text-center mb-7">
+   <div class="border rounded-lg p-6 w-80 text-center mb-7 shadow-lg">
     <i class="fas fa-user-circle text-6xl mb-4">
     </i>
     <h3 class="text-xl font-bold">
@@ -75,11 +73,14 @@
    </div>
   </div>
   <div class="flex justify-center space-x-8">
-   <div class="bg-green-200 p-6 w-80 rounded-lg shadow-lg">
-    <h3 class=" text-xl text-center font-bold">
-    Perubahan Nilai      
-    </h3>
-   </div>
+    <a href="/perubahannilai-akademik">
+      <div class="bg-green-200 p-6 w-80 rounded-lg shadow-lg" href="/perubahannilai-akademik">
+        <h3 class=" text-xl text-center font-bold">
+        Perubahan Nilai      
+        </h3>
+       </div>
+    </a>
+
    <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
     <h3 class=" text-xl text-center font-bold">
     Ruang Kuliah

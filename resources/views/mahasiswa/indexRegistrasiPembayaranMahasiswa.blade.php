@@ -31,7 +31,9 @@
     </div>
    </header>
  <body class="bg-gray-100">
-
+   <a class="text-gray-600 ml-4 mt-5 inline-block" href="/registrasi-mahasiswa">
+      ← Back
+     </a>
     </div>
    </div>
    <div class="flex space-x-8">

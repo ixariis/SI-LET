@@ -24,7 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lihatIRS-mahasiswa', [MahasiswaController::class, "lihatIRS_mahasiswa"]) -> name('mahasiswa.lihatIRS');
     Route::get('/lihatKHS-mahasiswa', [MahasiswaController::class, "lihatKHS_mahasiswa"]) -> name('mahasiswa.lihatKHS');
     Route::get('/buatIRS-mahasiswa', [MahasiswaController::class, "buatIRS_mahasiswa"]) -> name('mahasiswa.buatIRS');
-    Route::get("jadwalkuliah-mahasiswa", [MahasiswaController::class, "jadwalkuliah_mahasiswa"]) -> name('mahasiswa.jadwalkuliah');
+    Route::get("/jadwalkuliah-mahasiswa", [MahasiswaController::class, "jadwalkuliah_mahasiswa"]) -> name('mahasiswa.jadwalkuliah');
+
     
     //Dekan
     Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]);

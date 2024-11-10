@@ -56,9 +56,9 @@
   </header>
   
   <main class="p-8">
-   <h2 class="text-3xl text-center mb-8">
-    Dashboard
-   </h2>
+    <h2 class="text-3xl font-bold text-center mb-8">
+      Dashboard
+    </h2>
    <div class="flex justify-center mb-8">
     <div class="border rounded-lg p-6 w-96 text-center">
      <i class="fas fa-user-circle text-6xl mb-4">

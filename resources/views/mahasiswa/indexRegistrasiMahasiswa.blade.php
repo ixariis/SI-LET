@@ -20,12 +20,40 @@
        </div>
       </div>
       <div class="flex items-center space-x-4 mr-7">
-       <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
-       <img class= "w-14 h-14" src="assets/menu-bar.png" alt="menubar">
-      </div>
+        <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
+        <div class="relative">
+         <img 
+           class="w-14 h-14 cursor-pointer" 
+           src="assets/menu-bar.png" 
+           alt="menubar" 
+           onclick="toggleDropdown()"
+         >
+         <!-- Dropdown Menu -->
+         <div id="dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg">
+           <a href="/dashboard-mahasiswa" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+           <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+         </div>
+       </div>
+     
+       <script>
+         function toggleDropdown() {
+           const dropdown = document.getElementById("dropdown");
+           dropdown.classList.toggle("hidden");
+         }
+     
+         // Menutup dropdown jika pengguna mengklik di luar elemen dropdown
+         window.onclick = function(event) {
+           const dropdown = document.getElementById("dropdown");
+           if (!event.target.closest('img')) { // Pastikan tidak mengklik icon menu bar
+             dropdown.classList.add('hidden'); // Tutup dropdown
+           }
+         }
+       </script>
+        </a>
+       </div>
      </header>
    <main class="p-8">
-    <a class="text-gray-600 mb-4 -mt-5 inline-block" href="#">
+    <a class="text-gray-600 mb-4 -mt-5 inline-block" href="/dashboard-mahasiswa">
      ← Back
     </a>
     <h2 class="text-2xl font-bold text-center mb-8">
@@ -37,9 +65,11 @@
       <p class="text-center mb-4">
        Anda akan mengikuti Perkuliahan dan Aktif sebagai Mahasiswa
       </p>
-      <button class="bg-green-500 text-white px-4 py-2 rounded mt-7">
-       AKTIF
-      </button>
+      <a href="/pembayaranUKT-mahasiswa">
+        <button class="bg-green-500 text-white px-4 py-2 rounded mt-7">
+          AKTIF
+         </button>
+      </a>
      </div>
      <div class="border p-4 w-1/3 flex flex-col items-center rounded-xl shadow-lg bg-[F9F7F7]">
       <img alt="Cuti Icon" class="h-12 w-12 mb-4" src="https://placehold.co/50x50"/>
