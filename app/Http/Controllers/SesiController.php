@@ -66,10 +66,4 @@ class SesiController extends Controller
         return redirect(route('loginpage'));
     }
 
-    function backtoDashboardM(){
-        Session::flush();
-        Auth::backtoDashboard();
-        return redirect(route('dashboard-mahasiswa'));
-    }
-  
 }

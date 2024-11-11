@@ -10,4 +10,13 @@ class KaprodiController extends Controller
     function dashboard_kaprodi(){
         return view('kaprodi/indexDashboardKaprodi');
     }
+    function penyusunanjadwalkuliah_kaprodi(){
+        return view('kaprodi/indexPenyusunanJadwalKuliah');
+    }
+    function penyusunanjadwalkuliah_kaprodi2(){
+        return view('kaprodi/indexPenyusunanJadwalKuliah2');
+    }
+    function penyusunanjadwalkuliah_kaprodi3(){
+        return view('kaprodi/indexPenyusunanJadwalKuliah3');
+    }
 }
