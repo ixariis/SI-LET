@@ -87,7 +87,7 @@
         </h3>
        </div>
     </a>
-    <a href="/perubahanjadwalkuliah-akademiks">
+    <a href="/perubahanjadwalkuliah-akademik">
       <div class="bg-yellow-200 p-6 w-80 rounded-lg text-center shadow-lg">
         <h3 class="text-xl text-center font-bold">
         Penjadwalan
