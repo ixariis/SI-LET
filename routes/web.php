@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Akademik
     Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]);
     Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]);
+    Route::get("/penentuanruangkuliah-akademik", [AkademikController::class, "penentuanruangkuliah_akademik"]);
+    Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]);
 
     //logout
     Route::get("/logout", [SesiController::class, "logout"]) -> name('logout');

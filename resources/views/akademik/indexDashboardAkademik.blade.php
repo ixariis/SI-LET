@@ -80,17 +80,21 @@
         </h3>
        </div>
     </a>
-
-   <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
-    <h3 class=" text-xl text-center font-bold">
-    Ruang Kuliah
-    </h3>
-   </div>
-   <div class="bg-yellow-200 p-6 w-80 rounded-lg text-center shadow-lg">
-    <h3 class="text-xl text-center font-bold">
-    Penjadwalan
-    </h3>
-   </div>
+    <a href="/penentuanruangkuliah-akademik">
+      <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
+        <h3 class=" text-xl text-center font-bold">
+        Ruang Kuliah
+        </h3>
+       </div>
+    </a>
+    <a href="/perubahanjadwalkuliah-akademiks">
+      <div class="bg-yellow-200 p-6 w-80 rounded-lg text-center shadow-lg">
+        <h3 class="text-xl text-center font-bold">
+        Penjadwalan
+        </h3>
+       </div>
+    </a>
+   
   </div>
  </body>
 </html>

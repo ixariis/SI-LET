@@ -13,4 +13,10 @@ class AkademikController extends Controller
     function perubahannilai_akademik(){
         return view ('akademik/indexPerubahanNilaiAkademik');
     }
+    function penentuanruangkuliah_akademik(){
+        return view('akademik/indexPenentuanRuangKuliah');
+    }
+    function perubahanjadwalkuliah_akademik(){
+        return view('akademik/indexPerubahanJadwalKuliah');
+    }
 }
