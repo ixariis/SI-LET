@@ -62,7 +62,7 @@
   </div>
   <div class="max-w-4xl mx-auto bg-[9BC0A5] p-6 rounded-lg">
    <h2 class="text-center text-xl font-bold mb-6">
-    PENYETUJUAN JADWAL KULIAH
+    Penyetujuan Jadwal Kuliah
    </h2>
    <div class="space-y-4">
     <div class="bg-white p-4 rounded-lg shadow flex justify-between items-center border-2">
