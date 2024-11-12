@@ -37,7 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/penyusunanjadwalkuliah-kaprodi", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi"]);
     Route::get("/penyusunanjadwalkuliah-kaprodi2", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi2"]);
     Route::get("/penyusunanjadwalkuliah-kaprodi3", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi3"]);
-    
+    Route::get("/penyusunanjadwalkuliah-kaprodi4", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi4"]);
+    Route::get("/verifikasiIRS-kaprodi", [KaprodiController::class, "verifikasiIRS_kaprodi"]);
+    Route::get("/verifikasiIRS-kaprodi2", [KaprodiController::class, "verifikasiIRS_kaprodi2"]);
+
     //Dosen
     Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]);
     

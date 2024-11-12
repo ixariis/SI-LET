@@ -226,6 +226,11 @@
      </tr>
     </tbody>
    </table>
+    <div class="flex justify-center mt-6" >
+      <a class="bg-green-500 text-white px-4 py-2 rounded" href="/penyusunanjadwalkuliah-kaprodi4">
+       Lihat Jadwal Sementara
+      </a>
+     </div>
   </div>
  </body>
 </html>
