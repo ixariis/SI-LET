@@ -78,16 +78,20 @@
     </div>
    </div>
    <div class="flex justify-center space-x-8">
-    <div class="bg-green-200  p-6 w-80 rounded-lg text-center shadow-lg">
-     <p class=" text-xl text-center font-bold">
-      Penyetujuan Jadwal Kuliah
-     </p>
-    </div>
-    <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
-     <p class="text-xl text-center font-bold">
-      Penyetujuan Ruang Kuliah
-     </p>
-    </div>
+    <a href="/penyetujuanjadwalkuliah-dekan">
+      <div class="bg-green-200  p-6 w-80 rounded-lg text-center shadow-lg">
+        <p class=" text-xl text-center font-bold">
+         Penyetujuan Jadwal Kuliah
+        </p>
+       </div>
+    </a>
+    <a href="/penyetujuanruangkulaih-dekan">
+      <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
+        <p class="text-xl text-center font-bold">
+         Penyetujuan Ruang Kuliah
+        </p>
+       </div>
+    </a>
    </div>
   </main>
  </body>
