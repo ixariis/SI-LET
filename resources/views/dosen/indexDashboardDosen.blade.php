@@ -85,11 +85,13 @@
         </p>
        </div>
     </a>
-    <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
-     <p class="text-xl text-center font-bold">
-      Pengesahan IRS
-     </p>
-    </div>
+    <a href="/verifikasiIRS-dosen">
+      <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
+        <p class="text-xl text-center font-bold">
+         Pengesahan IRS
+        </p>
+       </div>
+    </a>
    </div>
   </main>
  </body>
