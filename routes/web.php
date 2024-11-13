@@ -43,7 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Dosen
     Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]);
-    
+    Route::get("/perkembanganmahasiswa-dosen", [DosenController::class,"statusperkembanganmhs_dosen"]);
+    Route::get("/perkembanganmahasiswa-dosen2", [DosenController::class, "statusperkembanganmhs_dosen2"]);
+    Route::get("/perkembanganmahasiswa-dosen3", [DosenController::class, "statusperkembanganmhs_dosen3"]);
+    Route::get("/perkembanganmahasiswa-dosen4", [DosenController::class, "statusperkembanganmhs_dosen4"]);
     
     
     //Akademik

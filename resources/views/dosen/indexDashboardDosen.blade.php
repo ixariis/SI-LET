@@ -78,14 +78,16 @@
     </div>
    </div>
    <div class="flex justify-center space-x-8">
-    <div class="bg-green-200  p-6 w-80 rounded-lg text-center shadow-lg">
-     <p class=" text-xl text-center font-bold">
-      Pengesahan IRS
-     </p>
-    </div>
+    <a href="/perkembanganmahasiswa-dosen">
+      <div class="bg-green-200  p-6 w-80 rounded-lg text-center shadow-lg">
+        <p class=" text-xl text-center font-bold">
+         Perkembangan Mahasiswa
+        </p>
+       </div>
+    </a>
     <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
      <p class="text-xl text-center font-bold">
-      Perkembangan Mahasiswa
+      Pengesahan IRS
      </p>
     </div>
    </div>
