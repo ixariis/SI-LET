@@ -8,6 +8,7 @@ use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Routing\RouteUri;
 use Illuminate\Routing\RouteUrlGenerator;
 
 Route::middleware(["guest"])->group(function () {
@@ -25,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lihatKHS-mahasiswa', [MahasiswaController::class, "lihatKHS_mahasiswa"]) -> name('mahasiswa.lihatKHS');
     Route::get('/buatIRS-mahasiswa', [MahasiswaController::class, "buatIRS_mahasiswa"]) -> name('mahasiswa.buatIRS');
     Route::get("/jadwalkuliah-mahasiswa", [MahasiswaController::class, "jadwalkuliah_mahasiswa"]) -> name('mahasiswa.jadwalkuliah');
+    Route::get('/transkrip-mahasiswa', [MahasiswaController::class, "transkrip_mahasiswa"]);
 
     
     //Dekan
@@ -43,9 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Dosen
     Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]);
-    
-    
-    
+    Route::get("/perkembanganmahasiswa-dosen", [DosenController::class,"statusperkembanganmhs_dosen"]);
+    Route::get("/perkembanganmahasiswa-dosen2", [DosenController::class, "statusperkembanganmhs_dosen2"]);
+    Route::get("/perkembanganmahasiswa-dosen3", [DosenController::class, "statusperkembanganmhs_dosen3"]);
+    Route::get("/perkembanganmahasiswa-dosen4", [DosenController::class, "statusperkembanganmhs_dosen4"]);
+    Route::get("/verifikasiIRSpermintaan-dosen", [DosenController::class, "verifikasiIRSpermintaan_dosen"]);
+    Route::get("/verifikasiIRSSah-dosen", [DosenController::class, "verifikasiIRSdisahkan_dosen"]);
+    Route::get("/verifikasiIRSditolak-dosen", [DosenController::class, "verifikasiIRSditolak_dosen"]);
+
+
     //Akademik
     Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]);
     Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]);

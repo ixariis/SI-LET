@@ -78,7 +78,7 @@
         <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center" href="{{ route('mahasiswa.lihatKHS') }}">
             KHS
         </a>
-        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center">
+        <a class="bg-gray-200 p-4 border rounded-md flex items-center justify-center " href="/transkrip-mahasiswa">
             Transkrip
         </a>
     

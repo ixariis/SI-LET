@@ -8,7 +8,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
  </head>
  <body class="bg-gray-100">
-    <header class="bg-[9BC0C0] p-0.5 flex justify-between items-center">
+    <header class="bg-[#9BC0C0] p-0.5 flex justify-between items-center">
         <div class="flex items-center">
          <img alt="SI-LET Logo" class=" h-24 w-24 mr-2" src="assets/silet_logo.png" />
          <div>
