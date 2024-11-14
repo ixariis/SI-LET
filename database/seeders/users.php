@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class silet extends Seeder
+class users extends Seeder
 {
     /**
      * Run the database seeds.
