@@ -22,7 +22,13 @@ class DosenController extends Controller
     function statusperkembanganmhs_dosen4(){
         return view ('dosen/indexPerkembanganMahasiswa4');
     }
-    function verifikasiIRS_dosen(){
-        return view('dosen/indexVerifikasiIRSDosen');
+    function verifikasiIRSpermintaan_dosen(){
+        return view('dosen/indexVerifikasiIRSMintaDosen');
+    }
+    function verifikasiIRSdisahkan_dosen(){
+        return view('dosen/indexVerifikasIRSDisahkanDosen');
+    }
+    function verifikasiIRSditolak_dosen(){
+        return view('dosen/indexVerifikasiIRSDitolakDosen');
     }
 }

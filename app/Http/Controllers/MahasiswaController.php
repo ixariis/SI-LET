@@ -32,4 +32,7 @@ class MahasiswaController extends Controller
     function jadwalkuliah_mahasiswa(){
         return view('mahasiswa/indexJadwalKuliahMahasiswa');
     }
+    function transkrip_mahasiswa(){
+        return view('mahasiswa/indexTranskripMahasiswa');
+    }
 }
