@@ -73,21 +73,21 @@
    </div>
   </div>
   <div class="flex justify-center space-x-8">
-    <a href="/perubahannilai-akademik">
+    <a href = "{{ route('akademik.perubahannilai') }}">
       <div class="bg-green-200 p-6 w-80 rounded-lg shadow-lg" href="/perubahannilai-akademik">
         <h3 class=" text-xl text-center font-bold">
         Perubahan Nilai      
         </h3>
        </div>
     </a>
-    <a href="/penentuanruangkuliah-akademik">
+    <a href = "{{ route('akademik.penentuanruangkuliah') }}">
       <div class="bg-[#9bc0a5] p-6 w-80 rounded-lg text-center shadow-lg">
         <h3 class=" text-xl text-center font-bold">
         Ruang Kuliah
         </h3>
        </div>
     </a>
-    <a href="/perubahanjadwalkuliah-akademik">
+    <a href = "{{ route('akademik.perubahanjadwalkuliah') }}">
       <div class="bg-yellow-200 p-6 w-80 rounded-lg text-center shadow-lg">
         <h3 class="text-xl text-center font-bold">
         Penjadwalan
