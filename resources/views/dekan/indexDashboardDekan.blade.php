@@ -78,14 +78,14 @@
     </div>
    </div>
    <div class="flex justify-center space-x-8">
-    <a href="/penyetujuanjadwalkuliah-dekan">
+    <a href = "{{ route('dekan.penyetujuanjadwalkuliah') }}">
       <div class="bg-green-200  p-6 w-80 rounded-lg text-center shadow-lg">
         <p class=" text-xl text-center font-bold">
          Penyetujuan Jadwal Kuliah
         </p>
        </div>
     </a>
-    <a href="/penyetujuanruangkuliah-dekan">
+    <a href = "{{ route('dekan.penyetujuanruangkuliah') }}">
       <div class="bg-[#9bc0a5] rounded-lg p-6 w-80 text-center shadow-lg">
         <p class="text-xl text-center font-bold">
          Penyetujuan Ruang Kuliah

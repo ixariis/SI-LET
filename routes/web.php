@@ -18,7 +18,7 @@ Route::middleware(["guest"])->group(function () {
 
 Route::group(['middleware' => 'auth'], function () {
     //Mahasiswa
-    Route::get("/dashboard-mahasiswa", [MahasiswaController::class,"dashboard_mahasiswa"]);
+    Route::get("/dashboard-mahasiswa", [MahasiswaController::class,"dashboard_mahasiswa"]) -> name('mahasiswa.dashboard');
     Route::get("/registrasi-mahasiswa", [MahasiswaController::class,"registrasi_mahasiswa"]) -> name('mahasiswa.registrasi');
     Route::get('/pembayaranUKT-mahasiswa', [MahasiswaController::class, "Rpembayaran_mahasiswa"]);
     Route::get("/akademik-mahasiswa", [MahasiswaController::class, "akademik_mahasiswa"]) -> name('mahasiswa.akademik');
@@ -30,35 +30,35 @@ Route::group(['middleware' => 'auth'], function () {
 
     
     //Dekan
-    Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]);
-    Route::get("/penyetujuanruangkuliah-dekan", [DekanController::class, "penyetujuanruangkuliah_dekan"]);
-    Route::get("/penyetujuanjadwalkuliah-dekan", [DekanController::class, "penyetujuanjadwalkuliah_dekan"]);
+    Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]) -> name('dekan.dashboard');
+    Route::get("/penyetujuanruangkuliah-dekan", [DekanController::class, "penyetujuanruangkuliah_dekan"]) -> name('dekan.penyetujuanruangkuliah');
+    Route::get("/penyetujuanjadwalkuliah-dekan", [DekanController::class, "penyetujuanjadwalkuliah_dekan"]) -> name('dekan.penyetujuanjadwalkuliah');
     
     //Kaprodi
-    Route::get("/dashboard-kaprodi", [KaprodiController::class,"dashboard_kaprodi"]);
-    Route::get("/penyusunanjadwalkuliah-kaprodi", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi"]);
-    Route::get("/penyusunanjadwalkuliah-kaprodi2", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi2"]);
-    Route::get("/penyusunanjadwalkuliah-kaprodi3", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi3"]);
-    Route::get("/penyusunanjadwalkuliah-kaprodi4", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi4"]);
+    Route::get("/dashboard-kaprodi", [KaprodiController::class,"dashboard_kaprodi"]) -> name('kaprodi.dashboard');
+    Route::get("/penyusunanjadwalkuliah-kaprodi", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi"]) -> name('kaprodi.penyusunanjadwalkuliah');
+    Route::get("/penyusunanjadwalkuliah-kaprodi2", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi2"]) -> name('kaprodi.penyusunanjadwalkuliah2');
+    Route::get("/penyusunanjadwalkuliah-kaprodi3", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi3"]) -> name('kaprodi.penyusunanjadwalkuliah3');
+    Route::get("/penyusunanjadwalkuliah-kaprodi4", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi4"]) -> name('kaprodi.penyusunanjadwalkuliah3');
     Route::get("/verifikasiIRS-kaprodi", [KaprodiController::class, "verifikasiIRS_kaprodi"]);
     Route::get("/verifikasiIRS-kaprodi2", [KaprodiController::class, "verifikasiIRS_kaprodi2"]);
 
     //Dosen
-    Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]);
-    Route::get("/perkembanganmahasiswa-dosen", [DosenController::class,"statusperkembanganmhs_dosen"]);
+    Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]) -> name('dosen.dashboard');
+    Route::get("/perkembanganmahasiswa-dosen", [DosenController::class,"statusperkembanganmhs_dosen"]) -> name('dosen.statusperkembangan');
     Route::get("/perkembanganmahasiswa-dosen2", [DosenController::class, "statusperkembanganmhs_dosen2"]);
     Route::get("/perkembanganmahasiswa-dosen3", [DosenController::class, "statusperkembanganmhs_dosen3"]);
     Route::get("/perkembanganmahasiswa-dosen4", [DosenController::class, "statusperkembanganmhs_dosen4"]);
-    Route::get("/verifikasiIRSpermintaan-dosen", [DosenController::class, "verifikasiIRSpermintaan_dosen"]);
+    Route::get("/verifikasiIRSpermintaan-dosen", [DosenController::class, "verifikasiIRSpermintaan_dosen"]) -> name('dosen.verifikasiIRS');
     Route::get("/verifikasiIRSSah-dosen", [DosenController::class, "verifikasiIRSdisahkan_dosen"]);
     Route::get("/verifikasiIRSditolak-dosen", [DosenController::class, "verifikasiIRSditolak_dosen"]);
 
 
     //Akademik
-    Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]);
-    Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]);
-    Route::get("/penentuanruangkuliah-akademik", [AkademikController::class, "penentuanruangkuliah_akademik"]);
-    Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]);
+    Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]) -> name('akademik.dashboard');
+    Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]) -> name('akademik.perubahannilai');
+    Route::get("/penentuanruangkuliah-akademik", [AkademikController::class, "penentuanruangkuliah_akademik"]) -> name('akademik.penentuanruangkuliah');
+    Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]) -> name('akademik.perubahanjadwalkuliah');
 
     //logout
     Route::get("/logout", [SesiController::class, "logout"]) -> name('logout');
