@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('akademik', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('nip');
+            $table->string('fakultas');
+            $table->string('e-mail');
             $table->timestamps();
         });
     }

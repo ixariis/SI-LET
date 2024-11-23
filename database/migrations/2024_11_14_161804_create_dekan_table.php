@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Laravel\Prompts\table;
+
 return new class extends Migration
 {
     /**
@@ -13,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('dekan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('nip');
+            $table->string('fakultas');
+            $table->string('e-mail');
             $table->timestamps();
         });
     }
