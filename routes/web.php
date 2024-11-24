@@ -13,10 +13,12 @@ use Illuminate\Routing\RouteUrlGenerator;
 
 Route::middleware(["guest"])->group(function () {
     Route::get("/", [SesiController::class,"loginpage"]) -> name('loginpage');
-    Route::post("/", [SesiController::class,"login"]) -> name('login');
+    Route::post("/login", [SesiController::class,"login"]) -> name('login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::post("/select-role", [SesiController::class,"selectRole"]) -> name('select-role');
+
     //Mahasiswa
     Route::get("/dashboard-mahasiswa", [MahasiswaController::class,"dashboard_mahasiswa"]) -> name('mahasiswa.dashboard');
     Route::get("/registrasi-mahasiswa", [MahasiswaController::class,"registrasi_mahasiswa"]) -> name('mahasiswa.registrasi');
@@ -61,6 +63,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]) -> name('akademik.perubahanjadwalkuliah');
 
     //logout
-    Route::get("/logout", [SesiController::class, "logout"]) -> name('logout');
+    Route::post("/logout", [SesiController::class, "logout"]) -> name('logout');
     
 });

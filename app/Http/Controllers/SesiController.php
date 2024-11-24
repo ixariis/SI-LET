@@ -2,63 +2,115 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Container\Attributes\Auth as AttributesAuth;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\RedirectResponse;
+
+use Illuminate\Container\Attributes\Auth as AttributesAuth;
 
 class SesiController extends Controller
 {
     function loginpage()
     {
         if (Auth::check()) {
-            return redirect()->route('login'); // Ganti 'home' dengan route yang sesuai
+            $userRole = UserRole::where('user_id', Auth::id())->first();
+            if ($userRole) {
+                return $this->redirectToDashboard($userRole->role_id);
+            }
+            Auth::logout();
         }
-        return view('indexLoginPage');
+        // Mengirim userRoles sebagai null untuk form login awal
+        $userRoles = null;
+        return view('indexLoginPage', compact('userRoles'));
     }
 
-    function login(Request $request){
+    public function login(Request $request)
+    {
         $request->validate([
             'email' =>'required',
             'password' => 'required'
         ],[
-            'email.required' => 'email wajib diisi',
-            'password.required' => 'password wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Password wajib diisi',
         ]);
 
-        $detaillogin =[
-
+        $detaillogin = [
             'email' => $request->email,
             'password' => $request->password,
-
         ];
 
-        if(Auth::attempt($detaillogin)){
-            if(Auth::user()->role == 'dekan'){
-                return redirect('dashboard-dekan');
+        if(Auth::attempt($detaillogin)) {
+            $user = Auth::user();
+            $userRoles = UserRole::with('role')
+                ->where('user_id', $user->id)
+                ->get();
+
+            if($userRoles->isEmpty()) {
+                Auth::logout();
+                return redirect()->route('loginpage')->with('error', 'Role tidak ditemukan');
             }
-            
-            else if(Auth::user()->role == 'mahasiswa'){
-                return redirect('dashboard-mahasiswa');
+
+            if ($userRoles->count() == 1) {
+                return $this->redirectToDashboard($userRoles->first()->role_id);
             }
-            
-            else if(Auth::user()->role == 'akademik'){
-                return redirect('dashboard-akademik');
-            }
-            
-            else if(Auth::user()->role == 'dosen'){
-                return redirect('dashboard-dosen');
-            }
-            
-            else if(Auth::user()->role == 'kaprodi'){
-                return redirect('dashboard-kaprodi');
-            }
-            
-        }else{
-            return redirect('loginpage')->withErrors('Username dan Password') ->withInput();
+
+            // Jika memiliki multiple role, tampilkan form pilihan
+            return view('indexLoginPage', ['userRoles' => $userRoles]);
         }
 
+        return redirect()->route('loginpage')->with('error', 'Email atau password salah');
     }
+
+    public function selectRole(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('loginpage')->with('error', 'Silahkan login terlebih dahulu');
+        }
+
+        $roleId = $request->role_id;
+        
+        // Cek apakah role valid untuk user yang sedang login
+        $userRole = UserRole::where('user_id', Auth::id())
+            ->where('role_id', $roleId)
+            ->first();
+        
+        if (!$userRole) {
+            // Ambil kembali semua role user untuk ditampilkan di form
+            $userRoles = UserRole::with('role')
+                ->where('user_id', Auth::id())
+                ->get();
+                
+            return view('indexLoginPage', [
+                'userRoles' => $userRoles,
+            ])->with('error', 'Role tidak valid');
+        }
+        
+        return $this->redirectToDashboard($roleId);
+    }
+
+    private function redirectToDashboard($roleId) 
+    {
+        switch($roleId) {
+            case 1: // Mahasiswa
+                return redirect()->route('mahasiswa.dashboard');
+            case 2: // Akademik
+                return redirect()->route('akademik.dashboard');
+            case 3: // Dosenn
+                return redirect()->route('dosen.dashboard');
+            case 4: // Dosen
+                return redirect()->route('dosen.dashboard');
+            case 5: // Dekan
+                return redirect()->route('dekan.dashboard');
+            case 6: // Kaprodi
+                return redirect()->route('kaprodi.dashboard');
+            default:
+                Auth::logout();
+                return redirect()->route('loginpage')->with('error', 'Role tidak valid');
+        }
+    }
+    
 
     function logout(){
         Session::flush();
