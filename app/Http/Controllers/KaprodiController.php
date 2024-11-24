@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kaprodi;
 use Illuminate\Http\Request;
-use Illuminate\Suppor\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class KaprodiController extends Controller
 {
     function dashboard_kaprodi(){
-        return view('kaprodi/indexDashboardKaprodi');
+        $user = Auth::user();
+        $kaprodi = Kaprodi::where('email',$user->email)->first();
+
+        return view('kaprodi/indexDashboardKaprodi')->with('data',$kaprodi);
     }
     function penyusunanjadwalkuliah_kaprodi(){
         return view('kaprodi/indexPenyusunanJadwalKuliah');

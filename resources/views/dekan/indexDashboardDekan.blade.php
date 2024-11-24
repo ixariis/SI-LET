@@ -64,7 +64,7 @@
      <i class="fas fa-user-circle text-6xl mb-4">
      </i>
      <h3 class="font-bold text-xl">
-      Bruce Wayne
+      {{$data}}
      </h3>
      <p>
       566646453345

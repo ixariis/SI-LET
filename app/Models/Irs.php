@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dekan extends Model
+class Irstest extends Model
 {
     use HasFactory;
+    protected $table = 'irs_test';
 
-    protected $table = 'dekan'; // Nama tabel di database
     protected $fillable = [
-        'nama',
-        'nip',
-        'fakultas',
         'email',
+        'kodejadwal',
+        'kodemk',
+        'prioritas',
+        'status',
+        'semester'
     ];
 }

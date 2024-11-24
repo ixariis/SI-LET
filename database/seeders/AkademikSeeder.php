@@ -18,20 +18,21 @@ class AkademikSeeder extends Seeder
                 'nama' => 'Yamazaki Shintaro',
                 'nip' => '2502821099',
                 'fakultas' => 'Fakultas Teknik',
-                'e-mail'=> 'peraturan@gmail.com',
+                'email'=> 'peraturan@gmail.com',
             ],
             [
                 'nama' => 'Ras Al-Ghul',
                 'nip' => '2502221098',
                 'fakultas' => 'Fakultas Teknik',
-                'e-mail'=> 'hidupabadi@gmail.com',
+                'email'=> 'hidupabadi@gmail.com',
             ],
             [
                 'nama' => 'Slade Wilson',
                 'nip' => '2502721078',
                 'fakultas' => 'Fakultas Teknik',
-                'e-mail'=> 'betterversionofdeadpool@gmail.com',
+                'email'=> 'betterversionofdeadpool@gmail.com',
             ],
+            
         ];
         foreach ($AkademikData as $data) {
             Akademik::create($data); // Menyimpan data ke database
