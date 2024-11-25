@@ -59,7 +59,7 @@
     <i class="fas fa-user-circle text-6xl mb-4">
     </i>
     <h3 class="text-xl font-bold">
-     Clark Kent
+     {{$data->nama}}
     </h3>
     <p>
      5617212123
@@ -68,7 +68,7 @@
      Fakultas Sains dan Matematika
     </p>
     <p>
-     clarkasoy@akademik.com
+     {{$data->email}}
     </p>
    </div>
   </div>

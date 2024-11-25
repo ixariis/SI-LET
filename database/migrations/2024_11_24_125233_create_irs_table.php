@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaprodi', function (Blueprint $table) {
+        Schema::create('irs_test', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nip');
-            $table->string('fakultas');
             $table->string('email');
+            $table->string('kodejadwal');
+            $table->string('kodemk');
+            $table->integer('prioritas')->default(0);
+            $table->string('status');
+            $table->string('semester');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaprodi');
+        Schema::dropIfExists('irs_test');
     }
 };

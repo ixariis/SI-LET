@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaprodi', function (Blueprint $table) {
+        Schema::create('dosen_penampu', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
             $table->string('nip');
-            $table->string('fakultas');
-            $table->string('email');
+            $table->string('kodemk');
+
             $table->timestamps();
+
+            
+            $table->foreign('nip')->references('nip')->on('dosen')->onDelete('cascade');
+            $table->foreign('kodemk')->references('kodemk')->on('mata_kuliah')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaprodi');
+        Schema::dropIfExists('dosen_matakuliah');
     }
 };

@@ -19,19 +19,19 @@ class DekanSeeder extends Seeder
                 'nama' => 'Yamazaki Shingen',
                 'nip' => '2502822099',
                 'fakultas' => 'Fakultas Teknik',
-                'e-mail'=> 'bapaknyaGun@gmail.com',
+                'email'=> 'bapaknyaGun@gmail.com',
             ],
             [
                 'nama' => 'Alfred Pennyworth',
                 'nip' => '2502522098',
                 'fakultas' => 'Fakultas Ilmu Budaya',
-                'e-mail'=> 'urloyalguy@gmail.com',
+                'email'=> 'urloyalguy@gmail.com',
             ],
             [
                 'nama' => 'Kakashi Hatake',
                 'nip' => '2502722658',
                 'fakultas' => 'Fakultas Sains dan Matematika',
-                'e-mail'=> 'kangcopas@gmail.com',
+                'email'=> 'kangcopas@gmail.com',
             ],
         ];
         foreach ($DekanData as $data) {

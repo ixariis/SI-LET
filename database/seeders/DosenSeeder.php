@@ -17,7 +17,7 @@ class DosenSeeder extends Seeder
             [
                 'nip' => '2502823139',
                 'nama' => 'Lee Dogyu',
-                'e-mail'=> 'cintasejatimskim@gmail.com',
+                'email'=> 'cintasejatimskim@gmail.com',
                 'fakultas' => 'Fakultas Ilmu Sosial dan Ilmu Politik',
                 'jurusan' => 'Teknik Kimia',
                 
@@ -25,7 +25,7 @@ class DosenSeeder extends Seeder
             [
                 'nip' => '2502523158',
                 'nama' => 'Choi Dongsoo',
-                'e-mail'=> 'buntunk@gmail.com',
+                'email'=> 'buntunk@gmail.com',
                 'fakultas' => 'Fakultas Hukum',
                 'jurusan' => 'Hukum',
                 
@@ -33,7 +33,7 @@ class DosenSeeder extends Seeder
             [
                 'nip' => '2502523122',
                 'nama' => 'Selina Kyle',
-                'e-mail'=> 'ketwomen@gmail.com',
+                'email'=> 'ketwomen@gmail.com',
                 'fakultas' => 'Fakultas Ekonomi dan Bisnis',
                 'jurusan' => 'Manajemen',
             ],

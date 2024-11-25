@@ -14,6 +14,6 @@ class Akademik extends Model
         'nama',
         'nip',
         'fakultas',
-        'e-mail',
+        'email',
     ];
 }

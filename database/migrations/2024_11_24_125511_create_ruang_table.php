@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaprodi', function (Blueprint $table) {
+        Schema::create('ruang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nip');
-            $table->string('fakultas');
-            $table->string('email');
+            $table->string('noruang')->unique();
+            $table->string('blokgedung');
+            $table->string('lantai');
+            $table->string('fungsi');
+            $table->string('kapasitas');
+            $table->string('status');
+            $table->string('prodi');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaprodi');
+        Schema::dropIfExists('ruang');
     }
 };

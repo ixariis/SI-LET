@@ -62,23 +62,23 @@
      </div>
      <div class="ml-10" >
       <h3 class="text-xl font-bold">
-       Wally West
+       {{$data->nama}}
       </h3>
       <p>
-       2406021442432
+       {{$data->nim}}
       </p>
       <p>
-       S1 Sastra Inggris
+       {{$data->jurusan}}
       </p>
       <p>
-       kachaawww@gmail.com
+       {{$data->email}}
       </p>
      </div>
     </div>
     <div class="flex space-x-4 mr-9">
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       Aktif
+       {{$data->status_M}}
       </h4>
       <p>
        Status Mahasiswa
@@ -86,7 +86,7 @@
      </div>
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       3.1
+       {{$data->IPK}}
       </h4>
       <p>
        IP Kumulatif
@@ -94,7 +94,7 @@
      </div>
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       14
+       {{$data->sks}}
       </h4>
       <p>
        SKS
@@ -102,7 +102,7 @@
      </div>
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       130
+       {{$data->total_sks}}
       </h4>
       <p>
        Total SKS
@@ -110,7 +110,7 @@
      </div>
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       5
+       {{$data->semester}}
       </h4>
       <p>
        Semester
@@ -118,7 +118,7 @@
      </div>
      <div class="bg-gray-200 p-4 rounded-lg text-center">
       <h4 class="text-lg font-bold">
-       3.98
+       {{$data->IPS}}
       </h4>
       <p>
        IP Semester

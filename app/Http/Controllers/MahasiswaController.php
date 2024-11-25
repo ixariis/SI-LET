@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
-use Illuminate\Suppor\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+
 
 class MahasiswaController extends Controller
 {
     function dashboard_mahasiswa(){
-        return view('mahasiswa/indexDashboardMahasiswa');
+
+        $user=Auth::user();
+       
+
+      
+        $mhs= Mahasiswa::where('email',$user->email)->first();
+    
+
+        return view('mahasiswa/indexDashboardMahasiswa')->with('data',$mhs);
     }
     function registrasi_mahasiswa(){
         return view('mahasiswa/indexRegistrasiMahasiswa');

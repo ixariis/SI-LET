@@ -15,7 +15,7 @@ return new class extends Migration
             $table -> id();
             $table -> string('nip');
             $table -> string('nama');
-            $table -> string('e-mail');
+            $table -> string('email');
             $table -> string('fakultas');
             $table -> string('jurusan');
             $table -> timestamps();

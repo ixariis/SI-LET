@@ -14,7 +14,7 @@ class Mahasiswa extends Model
         'nama',
         'nim',
         'jurusan',
-        'e-mail',
+        'email',
         'status_M',
         'IPK',
         'sks',

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akademik;
 use Illuminate\Http\Request;
-use Illuminate\Suppor\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AkademikController extends Controller
 {
     function dashboard_akademik(){
-        return view ('akademik/indexDashboardAkademik');
+
+        $user = Auth::user();
+        $akademik = Akademik::where('email',$user->email)->first();
+        return view ('akademik/indexDashboardAkademik')->with('data',$akademik);
     }
     function perubahannilai_akademik(){
         return view ('akademik/indexPerubahanNilaiAkademik');
