@@ -64,7 +64,7 @@
      <i class="fas fa-user-circle text-6xl mb-4">
      </i>
      <h3 class="font-bold text-xl">
-      {{$data}}
+      {{$data->nama}}
      </h3>
      <p>
       566646453345
@@ -73,7 +73,7 @@
       Fakultas Sains dan Matematika
      </p>
      <p>
-      akubetmen@dekan.co.id
+      {{$data->email}}
      </p>
     </div>
    </div>
