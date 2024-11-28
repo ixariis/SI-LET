@@ -22,4 +22,9 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Fakultas::class);
     }
+
+    public function doswal()
+    {
+        return $this->belongsTo(DosWal::class, 'doswal_id');
+    }
 }

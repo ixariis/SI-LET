@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId(column: 'dos_wal_id')->constrained('dos_wals')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relasi ke tabel users
             $table->foreignId('fakultas_id')->constrained('fakultas')->cascadeOnDelete(); // Relasi ke fakultas
             $table->foreignId('program_studi_id')->constrained('program_studis')->cascadeOnDelete(); // Relasi ke program studi

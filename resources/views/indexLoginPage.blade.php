@@ -49,9 +49,9 @@
             <!-- Tampilkan form pemilihan role jika ada userRoles -->
             <form action="{{ route('select-role') }}" method="POST">
                 @csrf
-                <select name="rolee_id" required class="form-select">
+                <select name="role_id" required class="form-select">
                     @foreach ($userRoles as $userRole)
-                        <option value="{{ $userRole->rolee_id }}">
+                        <option value="{{ $userRole->role_id }}">
                             {{ $userRole->role->nama_role }}
                         </option>
                     @endforeach

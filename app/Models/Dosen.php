@@ -20,5 +20,23 @@ class dosen extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }   
+    }
+
+    // Relasi ke Kaprodi (One-to-One)
+    public function kaprodi()
+    {
+        return $this->hasOne(Kaprodi::class, 'dosen_id');
+    }
+
+    // Relasi ke Dekan (One-to-One)
+    public function dekan()
+    {
+        return $this->hasOne(Dekan::class, 'dosen_id');
+    }
+
+    // Relasi ke Doswal (One-to-Many)
+    public function doswal()
+    {
+        return $this->hasMany(Doswal::class, 'dosen_id');
+    }
 }

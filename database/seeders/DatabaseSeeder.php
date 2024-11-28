@@ -18,8 +18,12 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(FakultasSeeder::class);
         $this->call(ProgramStudiSeeder::class);
+        $this->call(DoswalSeeder::class);
         $this->call(MahasiswaSeeder::class);
-        $this->call(DosKapSeeder::class);
         $this->call(AkademikSeeder::class);
+        $this->call(DosWalKapSeeder::class);
+        $this->call(DosWalDekSeeder::class);
+        $this->call(KaprodiSeeder::class);
+        $this->call(DekanSeeder::class);
     }
 }

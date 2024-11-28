@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaprodis', function (Blueprint $table) {
+        Schema::create('dekans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('dosen_id')->constrained('dosens')->onDelete('cascade'); // Relasi ke tabel dosens
-            $table->foreignId('program_studi_id')->constrained('program_studis')->cascadeOnDelete(); // Relasi ke program studi
+            $table->foreignId('fakultas_id')->constrained('fakultas')->onDelete('cascade'); // Relasi ke tabel fakultas
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaprodis');
+        Schema::dropIfExists('dekans');
     }
 };

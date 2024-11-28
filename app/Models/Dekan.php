@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kaprodi extends Model
+class Dekan extends Model
 {
     //
     // Relasi ke Dosen
@@ -13,10 +13,9 @@ class Kaprodi extends Model
         return $this->belongsTo(Dosen::class, 'dosen_id');
     }
 
-    // Relasi ke Prodi
-    public function prodi()
+    // Relasi ke Fakultas
+    public function fakultas()
     {
-        return $this->belongsTo(ProgramStudi::class, 'program_studi_id');
+        return $this->belongsTo(Fakultas::class, 'fakultas_id');
     }
-
 }

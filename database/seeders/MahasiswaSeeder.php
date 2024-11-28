@@ -28,6 +28,7 @@ class MahasiswaSeeder extends Seeder
                 'no_hp' => '081234567890',
                 'program_studi_id' => 2,
                 'fakultas_id' => 1,
+                'dos_wal_id' => 1, 
             ],
             [
                 'password' => bcrypt('123'),
@@ -38,6 +39,7 @@ class MahasiswaSeeder extends Seeder
                 'no_hp' => '089876543210',
                 'program_studi_id' => 2,
                 'fakultas_id' => 2,
+                'dos_wal_id' => 1,
             ]
         ];
 
@@ -69,7 +71,8 @@ class MahasiswaSeeder extends Seeder
                 'alamat' => $data['alamat'],
                 'no_hp' => $data['no_hp'],
                 'program_studi_id' => $data['program_studi_id'],
-                'fakultas_id' => $data['fakultas_id']
+                'fakultas_id' => $data['fakultas_id'],
+                'dos_wal_id' => $data['dos_wal_id'],
             ]);
         }
     }
