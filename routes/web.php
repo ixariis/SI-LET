@@ -6,6 +6,7 @@ use App\Http\Controllers\KaprodiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\RuangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\Irstest;
@@ -60,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]) -> name('akademik.perubahannilai');
     Route::get("/penentuanruangkuliah-akademik", [AkademikController::class, "penentuanruangkuliah_akademik"]) -> name('akademik.penentuanruangkuliah');
     Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]) -> name('akademik.perubahanjadwalkuliah');
+    Route::post('/update-prodi/{noruang}', [RuangController::class, 'updateProdi'])->name('update.prodi');
 
     //logout
     Route::get("/logout", [SesiController::class, "logout"]) -> name('logout');

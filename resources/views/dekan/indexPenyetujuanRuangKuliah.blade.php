@@ -62,7 +62,7 @@
   <div class="flex justify-center">
    <div class="bg-[8281C5] p-8 rounded-lg w-3/4">
     <h2 class="text-center text-xl font-bold mb-6">
-     Penyetujuan Ruangan Perkuliahan
+     Penyetujuan Gedung untuk Ruangan Perkuliahan
     </h2>
     <div class="space-y-4">
      <div class="bg-gray-200 p-4 rounded-lg flex justify-between items-center">
@@ -76,7 +76,7 @@
       </div>
       <div class="flex items-center space-x-4">
        <span class="bg-gray-400 text-white px-2 py-1 rounded">
-        K102
+        Gedung A
        </span>
        <a class="fas fa-check text-xl text-gray-600" href=""></a>
        <a class="fas fa-times text-xl text-gray-600" href=""></a>
@@ -93,7 +93,7 @@
       </div>
       <div class="flex items-center space-x-4">
        <span class="bg-gray-400 text-white px-2 py-1 rounded">
-        A303
+        Gedung B
        </span>
        <i class="fas fa-check text-xl text-gray-600">
        </i>
@@ -112,7 +112,7 @@
       </div>
       <div class="flex items-center space-x-4">
        <span class="bg-gray-400 text-white px-2 py-1 rounded">
-        E102
+        Gedung E
        </span>
        <i class="fas fa-check text-xl text-gray-600">
        </i>
@@ -131,7 +131,7 @@
         </div>
         <div class="flex items-center space-x-4">
          <span class="bg-gray-400 text-white px-2 py-1 rounded">
-          K102
+          Gedung D 
          </span>
          <i class="fas fa-check text-xl text-gray-600">
          </i>
