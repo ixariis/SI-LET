@@ -2,68 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class SesiController extends Controller
 {
+    // Fungsi untuk menampilkan halaman login
     function loginpage()
     {
+        // Jika sudah login, arahkan ke dashboard sesuai role
         if (Auth::check()) {
-            return redirect()->route('login'); // Ganti 'home' dengan route yang sesuai
+            $user = Auth::user();
+            // Redireksi sesuai dengan role pengguna
+            if ($user->role == 'dekan') {
+                return redirect()->route('dekan.dashboard');
+            } elseif ($user->role == 'mahasiswa') {
+                return redirect()->route('mahasiswa.dashboard');
+            } elseif ($user->role == 'akademik') {
+                return redirect()->route('akademik.dashboard');
+            } elseif ($user->role == 'dosen') {
+                return redirect()->route('dosen.dashboard');
+            } elseif ($user->role == 'kaprodi') {
+                return redirect()->route('kaprodi.dashboard');
+            }
         }
+        // Jika belum login, tampilkan halaman login
         return view('indexLoginPage');
     }
 
-    function login(Request $request){
+    // Fungsi untuk menangani proses login
+    function login(Request $request)
+    {
+        // Validasi input
         $request->validate([
-            'email' =>'required',
+            'email' => 'required',
             'password' => 'required'
-        ],[
-            'email.required' => 'email wajib diisi',
-            'password.required' => 'password wajib diisi',
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Password wajib diisi',
         ]);
 
-        $detaillogin =[
-
+        // Data login
+        $detaillogin = [
             'email' => $request->email,
             'password' => $request->password,
-
         ];
 
-        if(Auth::attempt($detaillogin)){
-            if(Auth::user()->role == 'dekan'){
-                return redirect('dashboard-dekan');
-            }
-            
-            else if(Auth::user()->role == 'mahasiswa'){
-                return redirect('dashboard-mahasiswa');
-            }
-            
-            else if(Auth::user()->role == 'akademik'){
-                return redirect('dashboard-akademik');
-            }
-            
-            else if(Auth::user()->role == 'dosen'){
-                return redirect('dashboard-dosen');
-            }
-            
-            else if(Auth::user()->role == 'kaprodi'){
-                return redirect('dashboard-kaprodi');
-            }
-            
-        }else{
-            return redirect('loginpage')->withErrors('Username dan Password') ->withInput();
-        }
+        // Cek login dengan kredensial yang diberikan
+        if (Auth::attempt($detaillogin)) {
+            // Jika login berhasil, arahkan pengguna sesuai dengan role
+            $user = Auth::user();
+            Log::info('Login successful', ['email' => $request->email]);
 
+            // Redireksi sesuai role
+            if ($user->role == 'dekan') {
+                return redirect()->route('dekan.dashboard');
+            } elseif ($user->role == 'mahasiswa') {
+                return redirect()->route('mahasiswa.dashboard');
+            } elseif ($user->role == 'akademik') {
+                return redirect()->route('akademik.dashboard');
+            } elseif ($user->role == 'dosen') {
+                return redirect()->route('dosen.dashboard');
+            } elseif ($user->role == 'kaprodi') {
+                return redirect()->route('kaprodi.dashboard');
+            }
+        } else {
+            // Jika login gagal, tampilkan pesan error dan kembali ke halaman login
+            Log::warning('Login failed', ['email' => $request->email]);
+            return redirect()->route('loginpage')->withErrors('Username dan Password salah')->withInput();
+        }
     }
 
-    function logout(){
+    // Fungsi untuk logout
+    function logout()
+    {
+        // Menghapus session dan logout pengguna
         Session::flush();
         Auth::logout();
-        return redirect(route('loginpage'));
-    }
 
+        // Redirect ke halaman login setelah logout
+        return redirect()->route('loginpage');
+    }
 }
