@@ -11,82 +11,87 @@
             <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Daftar Ruangan</h2>
 
             <!-- Tombol Tambah Ruangan dan Dropdown Pengurutan -->
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mb-4 space-x-4">
+                <!-- Tombol Tambah Ruangan -->
                 <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
                     onclick="openCreateModal()">
                     Tambah Ruangan
                 </button>
-
-                <!-- Dropdown untuk memilih Program Studi -->
+            
+                <!-- Dropdown untuk memilih Blok Gedung -->
                 <form action="{{ route('ruangan.index') }}" method="GET" class="inline-block">
-                    <select name="program_studi_id" class="border rounded p-2 text-sm" onchange="this.form.submit()">
-                        <option value="">-- Pilih Program Studi --</option>
-                        @foreach ($prodiList as $prodi)
-                            <option value="{{ $prodi->id }}"
-                                {{ request('program_studi_id') == $prodi->id ? 'selected' : '' }}>
-                                {{ $prodi->nama_program_studi }}
+                    <select name="blokgedung" class="border rounded p-2 text-sm" onchange="this.form.submit()">
+                        <option value="">-- Pilih Blok Gedung --</option>
+                        <option value="">Semua Blok Gedung</option> <!-- Opsi untuk menampilkan semuanya -->
+
+                        @foreach ($blokList as $blok)
+                            <option value="{{ $blok->blokgedung }}"
+                                {{ request('blokgedung') == $blok->blokgedung ? 'selected' : '' }}>
+                                {{ $blok->blokgedung }}
                             </option>
                         @endforeach
                     </select>
                 </form>
             </div>
+            
 
-            @if (session('success'))
-                <div class="bg-green-100 text-green-700 p-4 rounded-lg shadow-md mb-4 md:mb-6">
-                    {{ session('success') }}
-                </div>
-            @endif
 
-            <!-- Tabel Data -->
-            <div class="bg-white rounded-lg shadow-md overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-gray-200">
-                        <tr>
-                            <th class="p-2">No Ruang</th>
-                            <th class="p-2">Blok Gedung</th>
-                            <th class="p-2">Lantai</th>
-                            <th class="p-2">Fungsi</th>
-                            <th class="p-2">Kapasitas</th>
-                            <th class="p-2">Keterangan</th>
-                            <th class="p-2">Prodi</th>
-                            <th class="p-2">Status</th>
-                            <th class="p-2">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $ruangan)
-                            <tr class="border-b hover:bg-gray-50">
-                                <td class="p-2 text-center">{{ $ruangan->noruang }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->blokgedung }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->lantai }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->fungsi }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->kapasitas }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->keterangan }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->programStudi->nama_program_studi }}</td>
-                                <td class="p-2 text-center">{{ $ruangan->status }}</td>
-                                <td class="p-2 text-center">
-                                    <div class="flex justify-center space-x-2">
-                                        <button onclick="openEditModal({{ json_encode($ruangan) }})"
-                                            class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600">
-                                            Edit
-                                        </button>
-                                        <form action="{{ route('ruangan.destroy', $ruangan->id) }}" method="POST"
-                                            class="inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">
-                                                Hapus
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        @if (session('success'))
+            <div class="bg-green-100 text-green-700 p-4 rounded-lg shadow-md mb-4 md:mb-6">
+                {{ session('success') }}
             </div>
+        @endif
+
+        <!-- Tabel Data -->
+        <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="p-2">No Ruang</th>
+                        <th class="p-2">Blok Gedung</th>
+                        <th class="p-2">Lantai</th>
+                        <th class="p-2">Fungsi</th>
+                        <th class="p-2">Kapasitas</th>
+                        <th class="p-2">Keterangan</th>
+                        <th class="p-2">Prodi</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data as $ruangan)
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-2 text-center">{{ $ruangan->noruang }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->blokgedung }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->lantai }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->fungsi }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->kapasitas }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->keterangan }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->programStudi->nama_program_studi }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->status }}</td>
+                            <td class="p-2 text-center">
+                                <div class="flex justify-center space-x-2">
+                                    <button onclick="openEditModal({{ json_encode($ruangan) }})"
+                                        class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600">
+                                        Edit
+                                    </button>
+                                    <form action="{{ route('ruangan.destroy', $ruangan->id) }}" method="POST"
+                                        class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+    </div>
     </div>
 
     <!-- Modal Tambah Ruangan -->

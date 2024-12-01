@@ -28,8 +28,6 @@
                     </div>
                 </div>
 
-
-
                 <section
                     class="relative
                                 mb-8 mt-6 mx-8 bg-white border border-gray-200 rounded-3xl shadow-sm flex">
@@ -92,11 +90,12 @@
 
                                                     <!-- Tooltip untuk detail jadwal -->
                                                     <div
-                                                        class="absolute left-full top-0 ml-2 hidden group-hover:block bg-white shadow-lg border rounded-lg p-4 w-64 z-10">
+                                                        class="absolute left-full top-0 ml-0 hidden group-hover:block bg-white shadow-lg border rounded-lg p-4 w-64 z-10">
                                                         <p class="text-sm font-semibold mb-2">Detail Jadwal</p>
                                                         <ul class="text-sm text-gray-700 mb-3">
                                                             <li><strong>Mata Kuliah:</strong>
-                                                                {{ $jadwal->mataKuliah->nama_mk }}</li>
+                                                                {{ $jadwal->mataKuliah->nama_mk . ' ' . $jadwal->kelas }}</li>
+                                                            <li><strong>Ruang:</strong> {{ $jadwal->ruangan }}</li>
                                                             <li><strong>Hari:</strong> {{ $jadwal->hari }}</li>
                                                             <li><strong>Kelas:</strong> {{ $jadwal->kelas }}</li>
                                                             <li><strong>Kuota kelas:</strong> {{ $jadwal->kuota_kelas }}</li>
@@ -130,10 +129,6 @@
                                                 </div>
                                             @endif
                                         @endforeach
-
-
-
-
                                     </div>
                                 @endfor
                             </div>

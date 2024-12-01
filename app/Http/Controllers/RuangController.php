@@ -10,23 +10,26 @@ class RuangController extends Controller
 {
     //
     public function index(Request $request)
-{
-    // Ambil semua Program Studi untuk dropdown
-    $prodiList = ProgramStudi::all();
+    {
+        // Ambil semua Program Studi untuk dropdown
 
-    // Jika ada pilihan program studi untuk mengurutkan
-    if ($request->has('program_studi_id')) {
-        $programStudiId = $request->input('program_studi_id');
-        $data = Ruang::with('programStudi') // Relasi dengan program studi
-                    ->where('program_studi_id', $programStudiId)
-                    ->get();
-    } else {
-        // Jika tidak ada pilihan, ambil semua data
-        $data = Ruang::with('programStudi')->get();
+        // Ambil data ruangan berdasarkan blok gedung yang dipilih
+        
+        $query = Ruang::query();
+
+        if ($request->has('blokgedung') && $request->blokgedung != '') {
+            $query->where('blokgedung', $request->blokgedung);
+        }
+
+        // Ambil data ruangan
+        $data = $query->get();
+        $prodiList = ProgramStudi::all();
+        $blokList = Ruang::select('blokgedung')->distinct()->get(); // Ambil daftar blok gedung yang unik
+
+        
+
+        return view('akademik.IndexPenentuanRuangKuliah', compact('data', 'prodiList', 'blokList'));
     }
-
-    return view('akademik.IndexPenentuanRuangKuliah', compact('data', 'prodiList'));
-}
 
 
 
@@ -90,14 +93,25 @@ class RuangController extends Controller
         return redirect()->route('ruangan.index')->with('success', 'Ruangan berhasil dihapus!');
     }
 
-    public function showRuanganApproval()
+    public function showRuanganApproval(Request $request)
     {
-        // Mengambil semua ruangan dengan status 'Pending'
-        $ruangans = Ruang::where('status', 'Pending')->get();
-        // dd($ruangans);
+        // Ambil parameter 'program_studi' dari request
+        $programStudiId = $request->input('program_studi');
         
-        return view('dekan.indexPenyetujuanRuangKuliah', compact('ruangans'));
+        // Ambil semua program studi
+        $programStudis = ProgramStudi::all();
+        
+        // Query untuk ruangan, jika ada filter, terapkan filter
+        $ruangans = Ruang::with('programStudi') // Mengambil relasi program studi
+            ->where('status', 'Pending') // Filter berdasarkan status 'Pending'
+            ->when($programStudiId, function ($query) use ($programStudiId) {
+                return $query->where('program_studi_id', $programStudiId); // Terapkan filter berdasarkan program studi jika ada
+            })
+            ->paginate(10); // Pagination hasil query
+
+        return view('dekan.indexPenyetujuanRuangKuliah', compact('ruangans', 'programStudis'));
     }
+
 
     public function updateRuanganStatus(Request $request, $id)
     {

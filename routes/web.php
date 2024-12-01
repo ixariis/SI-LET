@@ -36,10 +36,19 @@ Route::group(['middleware' => 'auth'], function () {
     //Dekan
     Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]) -> name('dekan.dashboard');
     Route::get("/penyetujuanruangkuliah-dekan", [DekanController::class, "penyetujuanruangkuliah_dekan"]) -> name('dekan.penyetujuanruangkuliahh');
-    Route::get("/penyetujuanjadwalkuliah-dekan", [DekanController::class, "penyetujuanjadwalkuliah_dekan"]) -> name('dekan.penyetujuanjadwalkuliah');
+    // Route::get("/penyetujuanjadwalkuliah-dekan", [DekanController::class, "penyetujuanjadwalkuliah_dekan"]) -> name('dekan.penyetujuanjadwalkuliah');
     Route::get('/ruangan-approval', [RuangController::class, 'showRuanganApproval'])->name('dekan.penyetujuanruangkuliah');
     Route::post('/ruangan/{id}/approve', [RuangController::class, 'updateRuanganStatus'])->name('ruangan.approve');
     Route::post('/ruangan/{id}/reject', [RuangController::class, 'updateRuanganStatusReject'])->name('ruangan.reject');
+
+    Route::post('/jadwal/{id}/approve', [JadwalController::class, 'approveJadwal'])->name('jadwal.approve');
+    Route::post('/jadwal/{id}/reject', [JadwalController::class, 'rejectJadwal'])->name('jadwal.reject');
+    Route::get('/jadwal/{id}/cek', [JadwalController::class, 'cekJadwal'])->name('jadwal.cek');
+
+    // Route untuk halaman Penyetujuan Jadwal Kuliah
+    Route::get('/jadwal-penyetujuan', [JadwalController::class, 'showJadwalPenyetujuan'])->name('dekan.penyetujuanjadwalkuliah');
+
+
     
     //Kaprodi
     Route::get("/dashboard-kaprodi", [KaprodiController::class,"dashboard_kaprodi"]) -> name('kaprodi.dashboard');
