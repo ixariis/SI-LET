@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DosWalDekSeeder::class);
         $this->call(KaprodiSeeder::class);
         $this->call(DekanSeeder::class);
+        $this->call(MatKulSeeder::class);
+        $this->call(RuangSeeder::class);
+        
+        
     }
 }

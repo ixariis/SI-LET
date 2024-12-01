@@ -15,21 +15,17 @@ class ProgramStudiSeeder extends Seeder
     public function run(): void
     {
 
-        // Program studi untuk Fakultas Teknik
+        // Program studi 
         ProgramStudi::create([
-            'nama_program_studi' => 'Teknik Informatika',
+            'nama_program_studi' => 'S1 Teknik Informatika',
             'fakultas_id' => 1,
         ]);
 
         ProgramStudi::create([
-            'nama_program_studi' => 'Teknik Sipil',
-            'fakultas_id' => 1,
-        ]);
-
-        // Program studi untuk Fakultas Kedokteran
-        ProgramStudi::create([
-            'nama_program_studi' => 'Kedokteran Umum',
+            'nama_program_studi' => 'S1 Teknik Sipil',
             'fakultas_id' => 2,
         ]);
+
+        
     }
 }

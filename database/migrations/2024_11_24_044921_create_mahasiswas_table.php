@@ -16,12 +16,15 @@ return new class extends Migration
             $table->foreignId(column: 'dos_wal_id')->constrained('dos_wals')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relasi ke tabel users
             $table->foreignId('fakultas_id')->constrained('fakultas')->cascadeOnDelete(); // Relasi ke fakultas
-            $table->foreignId('program_studi_id')->constrained('program_studis')->cascadeOnDelete(); // Relasi ke program studi
+            $table->foreignId('jurusan')->constrained('program_studis')->cascadeOnDelete(); // Relasi ke program studi
             $table->string('nim')->unique(); // NIM mahasiswa
             $table->string('nama_lengkap'); // Nama lengkap mahasiswa
             $table->enum('jenis_kelamin', ['L', 'P']); // Jenis kelamin
             $table->text('alamat')->nullable(); // Alamat mahasiswa
             $table->string('no_hp')->nullable(); // Nomor telepon
+            $table->integer('semester');
+            $table->year('angkatan');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

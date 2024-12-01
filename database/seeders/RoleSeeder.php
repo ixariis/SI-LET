@@ -16,12 +16,11 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         DB::table('roles')->insert([
-            ['nama_role' => 'mahasiswa', 'parent_id' => null, 'created_at' => now(), 'updated_at' => now()],
-            ['nama_role' => 'akademik', 'parent_id' => null, 'created_at' => now(), 'updated_at' => now()],
-            ['nama_role' => 'dosenBiasa', 'parent_id' => null, 'created_at' => now(), 'updated_at' => now()],
-            ['nama_role' => 'doswal', 'parent_id' => 3, 'created_at' => now(), 'updated_at' => now()],
-            ['nama_role' => 'dekan', 'parent_id' => 3, 'created_at' => now(), 'updated_at' => now()],
-            ['nama_role' => 'kaprodi', 'parent_id' => 3, 'created_at' => now(), 'updated_at' => now()],
+            ['nama_role' => 'mahasiswa', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_role' => 'akademik', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_role' => 'doswal',  'created_at' => now(), 'updated_at' => now()],
+            ['nama_role' => 'dekan', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_role' => 'kaprodi', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

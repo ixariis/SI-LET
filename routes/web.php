@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\DekanController;
-use App\Http\Controllers\KaprodiController;
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\AkademikController;
-use App\Http\Controllers\SesiController;
+use Illuminate\Routing\RouteUri;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Illuminate\Routing\RouteUri;
+use App\Http\Controllers\SesiController;
+use App\Http\Controllers\DekanController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\RuangController;
 use Illuminate\Routing\RouteUrlGenerator;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\KaprodiController;
+use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\MahasiswaController;
 
 Route::middleware(["guest"])->group(function () {
     Route::get("/", [SesiController::class,"loginpage"]) -> name('loginpage');
@@ -33,17 +35,41 @@ Route::group(['middleware' => 'auth'], function () {
     
     //Dekan
     Route::get("/dashboard-dekan", [DekanController::class,"dashboard_dekan"]) -> name('dekan.dashboard');
-    Route::get("/penyetujuanruangkuliah-dekan", [DekanController::class, "penyetujuanruangkuliah_dekan"]) -> name('dekan.penyetujuanruangkuliah');
+    Route::get("/penyetujuanruangkuliah-dekan", [DekanController::class, "penyetujuanruangkuliah_dekan"]) -> name('dekan.penyetujuanruangkuliahh');
     Route::get("/penyetujuanjadwalkuliah-dekan", [DekanController::class, "penyetujuanjadwalkuliah_dekan"]) -> name('dekan.penyetujuanjadwalkuliah');
+    Route::get('/ruangan-approval', [RuangController::class, 'showRuanganApproval'])->name('dekan.penyetujuanruangkuliah');
+    Route::post('/ruangan/{id}/approve', [RuangController::class, 'updateRuanganStatus'])->name('ruangan.approve');
+    Route::post('/ruangan/{id}/reject', [RuangController::class, 'updateRuanganStatusReject'])->name('ruangan.reject');
     
     //Kaprodi
     Route::get("/dashboard-kaprodi", [KaprodiController::class,"dashboard_kaprodi"]) -> name('kaprodi.dashboard');
     Route::get("/penyusunanjadwalkuliah-kaprodi", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi"]) -> name('kaprodi.penyusunanjadwalkuliah');
-    Route::get("/penyusunanjadwalkuliah-kaprodi2", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi2"]) -> name('kaprodi.penyusunanjadwalkuliah2');
     Route::get("/penyusunanjadwalkuliah-kaprodi3", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi3"]) -> name('kaprodi.penyusunanjadwalkuliah3');
     Route::get("/penyusunanjadwalkuliah-kaprodi4", [KaprodiController::class, "penyusunanjadwalkuliah_kaprodi4"]) -> name('kaprodi.penyusunanjadwalkuliah3');
     Route::get("/verifikasiIRS-kaprodi", [KaprodiController::class, "verifikasiIRS_kaprodi"]);
     Route::get("/verifikasiIRS-kaprodi2", [KaprodiController::class, "verifikasiIRS_kaprodi2"]);
+    // Route::get('jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create');
+    Route::get("/penyusunanjadwalkuliah-kaprodi2", [JadwalController::class, 'index']) -> name('kaprodi.penyusunanjadwalkuliah2');
+    // Route::post('jadwal', [JadwalController::class, 'store'])->name('jadwal.store');
+    // Route::post('jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create');
+
+    // Route::get('kalendar', [ScheduleController::class, 'index'])->name('kalendar.index');
+    Route::get('jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create');
+    Route::post('jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
+    Route::get('/jadwal/{id}/edit', [JadwalController::class, 'edit'])->name('jadwal.edit');
+    Route::put('/jadwal/{id}', [JadwalController::class, 'update'])->name('jadwal.update');
+    Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
+
+
+
+    // Menampilkan form untuk menambah jadwal
+
+    // Menyimpan jadwal baru
+    // Route::post('jadwal', [JadwalController::class, 'store'])->name('jadwal.store');
+
+    // Menampilkan daftar jadwal (optional)
+    // Route::get('jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+
 
     //Dosen
     Route::get("/dashboard-dosen", [DosenController::class,"dashboard_dosen"]) -> name('dosen.dashboard');
@@ -57,9 +83,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Akademik
-    Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]) -> name('akademik.dashboard');
-    Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]) -> name('akademik.perubahannilai');
+
+    Route::resource('ruangan', RuangController::class);
     Route::get("/penentuanruangkuliah-akademik", [AkademikController::class, "penentuanruangkuliah_akademik"]) -> name('akademik.penentuanruangkuliah');
+    Route::get("/perubahannilai-akademik", [AkademikController::class,"perubahannilai_akademik"]) -> name('akademik.perubahannilai');
+
+    Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]) -> name('akademik.dashboard');
     Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]) -> name('akademik.perubahanjadwalkuliah');
 
     //logout

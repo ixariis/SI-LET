@@ -73,7 +73,7 @@
    <div class="flex mt-4">
     <div class="w-1/4 bg-white p-4 border rounded-lg">
      <h4 class="text-center font-bold mb-4">
-      Prioritas
+      Pilih Matakuliah
      </h4>
      <div class="mb-4">
       <div class="bg-green-200 p-2 rounded-lg mb-2">

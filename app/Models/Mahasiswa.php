@@ -27,4 +27,9 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(DosWal::class, 'doswal_id');
     }
+
+    public function irs()
+    {
+        return $this->hasMany(Irs::class, 'mahasiswa_id', 'id');
+    }
 }

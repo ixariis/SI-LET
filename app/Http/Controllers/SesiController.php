@@ -97,13 +97,11 @@ class SesiController extends Controller
                 return redirect()->route('mahasiswa.dashboard');
             case 2: // Akademik
                 return redirect()->route('akademik.dashboard');
-            case 3: // Dosenn
+            case 3: // Dosen
                 return redirect()->route('dosen.dashboard');
-            case 4: // Dosen
-                return redirect()->route('dosen.dashboard');
-            case 5: // Dekan
+            case 4: // Dekan
                 return redirect()->route('dekan.dashboard');
-            case 6: // Kaprodi
+            case 5: // Kaprodi
                 return redirect()->route('kaprodi.dashboard');
             default:
                 Auth::logout();

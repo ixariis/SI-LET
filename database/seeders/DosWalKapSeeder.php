@@ -55,7 +55,6 @@ class DosWalKapSeeder extends Seeder
             // Menambahkan rolee yang sudah ada berdasarkan rolee_id
             $doswalRole = Role::where('nama_role', 'doswal')->first();
             $kaprodiRole = Role::where('nama_role', 'kaprodi')->first();
-            $dosenBiasa = Role::where('nama_role', 'dosenBiasa')->first();
 
             // Membuat role untuk user
             UserRole::create([
@@ -66,10 +65,7 @@ class DosWalKapSeeder extends Seeder
                 'user_id' => $user->id,
                 'role_id' => $kaprodiRole->id, 
             ]);
-            UserRole::create([
-                'user_id' => $user->id,
-                'role_id' => $dosenBiasa->id, 
-            ]);
+            
 
             // Membuat dosen dan menghubungkannya dengan user
             $dosen = Dosen::create([

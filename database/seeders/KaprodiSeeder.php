@@ -54,13 +54,8 @@ class KaprodiSeeder extends Seeder
             
             // Menambahkan rolee yang sudah ada berdasarkan rolee_id
             $kaprodiRole = Role::where('nama_role', 'kaprodi')->first();
-            $dosenBiasa = Role::where('nama_role', 'dosenBiasa')->first();
 
             // Membuat role untuk user
-            UserRole::create([
-                'user_id' => $user->id,
-                'role_id' => $dosenBiasa->id, 
-            ]);
             UserRole::create([
                 'user_id' => $user->id,
                 'role_id' => $kaprodiRole->id, 

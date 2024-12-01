@@ -52,14 +52,9 @@ class DekanSeeder extends Seeder
             ]);
             
             // Menambahkan rolee yang sudah ada berdasarkan rolee_id
-            $dosenBiasaRole = Role::where('nama_role', 'dosenBiasa')->first();
             $dekanRole = Role::where('nama_role', 'dekan')->first();
 
             // Membuat role untuk user
-            UserRole::create([
-                'user_id' => $user->id,
-                'role_id' => $dosenBiasaRole->id, 
-            ]);
             UserRole::create([
                 'user_id' => $user->id,
                 'role_id' => $dekanRole->id, 

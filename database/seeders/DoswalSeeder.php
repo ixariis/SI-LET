@@ -50,14 +50,10 @@ class DoswalSeeder extends Seeder
             ]);
             
             // Menambahkan rolee yang sudah ada berdasarkan rolee_id
-            $dosenBiasaRole = Role::where('nama_role', 'dosenBiasa')->first();
             $doswalRole = Role::where('nama_role', 'doswal')->first();
 
             // Membuat role untuk user
-            UserRole::create([
-                'user_id' => $user->id,
-                'role_id' => $dosenBiasaRole->id, 
-            ]);
+            
             UserRole::create([
                 'user_id' => $user->id,
                 'role_id' => $doswalRole->id, 

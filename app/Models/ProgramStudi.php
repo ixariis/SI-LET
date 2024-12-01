@@ -11,4 +11,10 @@ class ProgramStudi extends Model
     {
         return $this->belongsTo(Fakultas::class);
     }
+
+    public function ruangs()
+    {
+        return $this->hasMany(Ruang::class);
+    }
+
 }
