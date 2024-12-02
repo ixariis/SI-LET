@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use Illuminate\Http\Request;
-use Illuminate\Suppor\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
     function dashboard_dosen (){
-        return view ('dosen/indexDashboardDosen');
+
+        $user = Auth::user();
+
+
+        $dosen = Dosen::where('email',$user->email)->first();
+        
+        return view ('dosen/indexDashboardDosen')->with('data',$dosen);
     }
     function statusperkembanganmhs_dosen(){
         return view ('dosen/indexPerkembanganMahasiswa');

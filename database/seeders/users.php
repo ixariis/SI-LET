@@ -15,35 +15,96 @@ class users extends Seeder
     {
         $userData = [
             [
-                'name' => 'akademik',
-                'email' => 'akademik@operator.com',
+                'name' => 'Yamazaki Shintaro',
+                'email' => 'peraturan@gmail.com',
                 'role' => 'akademik',
-                'password' => bcrypt('akademik123')
+                'password' => bcrypt('omnyagun123')
             ],
             [
-                'name' => 'mahasiswa',
-                'email' => 'mahasiswa@students.com',
+                'name' => 'Ras Al-Ghul',
+                'email' => 'hidupabadi@gmail.com',
+                'role' => 'akademik',
+                'password' => bcrypt('abadi123')
+            ],
+            [
+                'name' => 'Slade Wilson',
+                'email' => 'betterversionofdeadpool@gmail.com',
+                'role' => 'akademik',
+                'password' => bcrypt('sakjose123')
+            ],
+            [
+                'name' => 'Park Jonggun',
+                'email' => 'marlong1@gmail.com',
                 'role' => 'mahasiswa',
-                'password' => bcrypt('mahasiswa123')
+                'password' => bcrypt('marlong123')
             ],
             [
-                'name' => 'dosen',
-                'email' => 'dosen@lecturer.com',
+                'name' => 'John Stewart',
+                'email' => 'johngantenk1@gmail.com',
+                'role' => 'mahasiswa',
+                'password' => bcrypt('okeh123')
+            ],
+            [
+                'name' => 'Kim Gimyung',
+                'email' => 'romantisme@gmail.com',
+                'role' => 'mahasiswa',
+                'password' => bcrypt('bigdeal123s')
+            ],
+            [
+                'name' => 'Choi Dongsoo',
+                'email' => 'buntunk@gmail.com',
                 'role' => 'dosen',
-                'password' => bcrypt('dosen123')
+                'password' => bcrypt('buntung123')
             ],
             [
-                'name' => 'dekan',
-                'email' => 'dekan@lecturer.com',
+                'name' => 'Lee Dogyu',
+                'email' => 'cintasejatimskim@gmail.com',
+                'role' => 'dosen',
+                'password' => bcrypt('kim123')
+            ],
+            [
+                'name' => 'Selina Kyle',
+                'email' => 'ketwomen@gmail.com',
+                'role' => 'dosen',
+                'password' => bcrypt('bojoku123')
+            ],
+            [
+                'name' => 'Yamazaki Shingen',
+                'email' => 'bapaknyaGun@gmail.com',
                 'role' => 'dekan',
-                'password' => bcrypt('dekan123')
+                'password' => bcrypt('bapakgun123')
             ],
             [
-                'name' => 'kaprodi',
-                'email' => 'kaprodi@lecturer.com',
-                'role' => 'kaprodi',
-                'password' => bcrypt('kaprodi123')
+                'name' => 'Alfred Pennyworth',
+                'email' => 'urloyalguy@gmail.com',
+                'role' => 'dekan',
+                'password' => bcrypt('eyang123')
             ],
+            [
+                'name' => 'Kakashi Hatake',
+                'email' => 'kangcopas@gmail.com',
+                'role' => 'dekan',
+                'password' => bcrypt('copas123')
+            ],
+            [
+                'name' => 'Ucup',
+                'email' => 'ucupgimang@gmail.com',
+                'role' => 'kaprodi',
+                'password' => bcrypt('ucup123')
+            ],
+            [
+                'name' => 'Agus Kopling',
+                'email' => 'aselole@gmail.com',
+                'role' => 'kaprodi',
+                'password' => bcrypt('agus123')
+            ],
+            [
+                'name' => 'Farhan Kebab',
+                'email' => 'icikiwir@gmail.com',
+                'role' => 'kaprodi',
+                'password' => bcrypt('kebab123')
+            ],
+            
         ];
         foreach ($userData as $key => $val) {
             User::create($val);

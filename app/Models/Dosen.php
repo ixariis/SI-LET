@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
 
 class dosen extends Model
@@ -44,4 +45,22 @@ class dosen extends Model
     {
         return $this->hasMany(Jadwal::class);
     }
+=======
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Dosen extends Model
+{
+    use HasFactory;
+
+    protected $table = 'dosen'; // Nama tabel di database
+    protected $fillable = [
+        'nip',
+        'nama',
+        'email',
+        'fakultas',
+        'jurusan',
+ 
+    ];
+>>>>>>> 4e231ff0064ee2ba4a76a29908655f4a6202aa7d
 }

@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use function Laravel\Prompts\table;
-
 return new class extends Migration
 {
     /**
@@ -13,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('program_studis', function (Blueprint $table) {
+        Schema::create('ruang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_program_studi');
-            $table->foreignId('fakultas_id')->constrained('fakultas')->cascadeOnDelete();
+            $table->string('noruang')->unique();
+            $table->string('blokgedung');
+            $table->string('lantai');
+            $table->string('fungsi');
+            $table->string('kapasitas');
+            $table->string('status');
+            $table->string('prodi');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('program_studis');
+        Schema::dropIfExists('ruang');
     }
 };

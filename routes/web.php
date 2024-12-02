@@ -3,10 +3,7 @@
 use Illuminate\Routing\RouteUri;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SesiController;
-use App\Http\Controllers\DekanController;
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\RuangController;
+use Illuminate\Routing\RouteUri;
 use Illuminate\Routing\RouteUrlGenerator;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KaprodiController;
@@ -26,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/registrasi-mahasiswa", [MahasiswaController::class,"registrasi_mahasiswa"]) -> name('mahasiswa.registrasi');
     Route::get('/pembayaranUKT-mahasiswa', [MahasiswaController::class, "Rpembayaran_mahasiswa"]);
     Route::get("/akademik-mahasiswa", [MahasiswaController::class, "akademik_mahasiswa"]) -> name('mahasiswa.akademik');
-    Route::get('/lihatIRS-mahasiswa', [MahasiswaController::class, "lihatIRS_mahasiswa"]) -> name('mahasiswa.lihatIRS');
+    Route::get('/lihatIRS-mahasiswa', [IrsController::class, "lihat_irs"]) -> name('mahasiswa.lihatIRS');
     Route::get('/lihatKHS-mahasiswa', [MahasiswaController::class, "lihatKHS_mahasiswa"]) -> name('mahasiswa.lihatKHS');
     Route::get('/buatIRS-mahasiswa', [MahasiswaController::class, "buatIRS_mahasiswa"]) -> name('mahasiswa.buatIRS');
     Route::get("/jadwalkuliah-mahasiswa", [MahasiswaController::class, "jadwalkuliah_mahasiswa"]) -> name('mahasiswa.jadwalkuliah');
@@ -99,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get("/dashboard-akademik", [AkademikController::class,"dashboard_akademik"]) -> name('akademik.dashboard');
     Route::get("/perubahanjadwalkuliah-akademik", [AkademikController::class, "perubahanjadwalkuliah_akademik"]) -> name('akademik.perubahanjadwalkuliah');
+    Route::post('/update-prodi/{noruang}', [RuangController::class, 'updateProdi'])->name('update.prodi');
 
     //logout
     Route::post("/logout", [SesiController::class, "logout"]) -> name('logout');

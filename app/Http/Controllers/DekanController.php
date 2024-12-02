@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Ruang;
 use Illuminate\Http\Request;
-use Illuminate\Suppor\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class DekanController extends Controller
 {
     function dashboard_dekan(){
-        return view('dekan/indexDashboardDekan');
+        $user = Auth::user();
+        $dekan = Dekan::where('email',$user->email)->first();
+        return view('dekan/indexDashboardDekan')->with('data',$dekan);
     }
     // function penyetujuanruangkuliah_dekan(){
     //     return view('dekan/indexPenyetujuanRuangKuliah');
