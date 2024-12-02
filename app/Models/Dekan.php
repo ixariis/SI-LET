@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Dekan extends Model
 {
-    use HasFactory;
+    //
+    // Relasi ke Dosen
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'dosen_id');
+    }
 
-    protected $table = 'dekan'; // Nama tabel di database
-    protected $fillable = [
-        'nama',
-        'nip',
-        'fakultas',
-        'email',
-    ];
+    // Relasi ke Fakultas
+    public function fakultas()
+    {
+        return $this->belongsTo(Fakultas::class, 'fakultas_id');
+    }
 }

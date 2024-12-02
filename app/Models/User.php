@@ -45,4 +45,36 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class);
+    }
+
+    public function akademik()
+    {
+        return $this->hasOne(Akademik::class);
+    }
+
+    public function dosen()
+    {
+        return $this->hasOne(Dosen::class);
+    }
+
+    public function userRole()
+    {
+        return $this->hasOne(UserRole::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOneThrough(
+            Role::class,
+            UserRole::class,
+            'user_id', // Foreign key on user_roles table
+            'id', // Foreign key on rolees table
+            'id', // Local key on users table
+            'rolee_id' // Local key on user_roles table
+        );
+    }
 }

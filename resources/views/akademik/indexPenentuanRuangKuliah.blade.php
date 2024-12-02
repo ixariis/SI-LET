@@ -1,172 +1,261 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Nunito', sans-serif;
+@extends('layout')
+
+@section('konten')
+@section('konten')
+    <div class="p-4 flex justify-start">
+        <a class="text-gray-600 text-sm" href="/dashboard-akademik">← Back</a>
+    </div>
+
+    <div class="container mx-auto px-4">
+        <div class="mt-4 bg-[#8281C5] p-4 md:p-8 rounded-lg shadow-lg w-full">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Daftar Ruangan</h2>
+
+            <!-- Tombol Tambah Ruangan dan Dropdown Pengurutan -->
+            <div class="flex justify-between items-center mb-4 space-x-4">
+                <!-- Tombol Tambah Ruangan -->
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+                    onclick="openCreateModal()">
+                    Tambah Ruangan
+                </button>
+            
+                <!-- Dropdown untuk memilih Blok Gedung -->
+                <form action="{{ route('ruangan.index') }}" method="GET" class="inline-block">
+                    <select name="blokgedung" class="border rounded p-2 text-sm" onchange="this.form.submit()">
+                        <option value="">-- Pilih Blok Gedung --</option>
+                        <option value="">Semua Blok Gedung</option> <!-- Opsi untuk menampilkan semuanya -->
+
+                        @foreach ($blokList as $blok)
+                            <option value="{{ $blok->blokgedung }}"
+                                {{ request('blokgedung') == $blok->blokgedung ? 'selected' : '' }}>
+                                {{ $blok->blokgedung }}
+                            </option>
+                        @endforeach
+                    </select>
+                </form>
+            </div>
+            
+
+
+        @if (session('success'))
+            <div class="bg-green-100 text-green-700 p-4 rounded-lg shadow-md mb-4 md:mb-6">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- Tabel Data -->
+        <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="p-2">No Ruang</th>
+                        <th class="p-2">Blok Gedung</th>
+                        <th class="p-2">Lantai</th>
+                        <th class="p-2">Fungsi</th>
+                        <th class="p-2">Kapasitas</th>
+                        <th class="p-2">Keterangan</th>
+                        <th class="p-2">Prodi</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data as $ruangan)
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-2 text-center">{{ $ruangan->noruang }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->blokgedung }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->lantai }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->fungsi }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->kapasitas }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->keterangan }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->programStudi->nama_program_studi }}</td>
+                            <td class="p-2 text-center">{{ $ruangan->status }}</td>
+                            <td class="p-2 text-center">
+                                <div class="flex justify-center space-x-2">
+                                    <button onclick="openEditModal({{ json_encode($ruangan) }})"
+                                        class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600">
+                                        Edit
+                                    </button>
+                                    <form action="{{ route('ruangan.destroy', $ruangan->id) }}" method="POST"
+                                        class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <!-- Modal Tambah Ruangan -->
+    <div id="createModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold">Tambah Ruangan</h2>
+                <button class="text-gray-600 hover:text-gray-800" onclick="closeCreateModal()">✖</button>
+            </div>
+            <form action="{{ route('ruangan.store') }}" method="POST" class="mt-4">
+                @csrf
+                @if ($errors->any())
+                    <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold">No Ruang:</label>
+                        <input type="text" name="noruang" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Blok Gedung:</label>
+                        <input type="text" name="blokgedung" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Lantai:</label>
+                        <input type="number" name="lantai" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Fungsi:</label>
+                        <input type="text" name="fungsi" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Kapasitas:</label>
+                        <input type="number" name="kapasitas" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Prodi:</label>
+                        <select name="program_studi_id" class="w-full border rounded p-2">
+                            <option value="">-- Pilih Prodi --</option>
+                            @foreach ($prodiList as $prodi)
+                                <option value="{{ $prodi->id }}">{{ $prodi->nama_program_studi }}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Simpan</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                        onclick="closeCreateModal()">Batal</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Modal Edit Ruangan -->
+    <div id="editModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50  items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold">Edit Ruangan</h2>
+                <button class="text-gray-600 hover:text-gray-800" onclick="closeEditModal()">✖</button>
+            </div>
+            <form id="editForm" method="POST" class="mt-4">
+                @csrf
+                @method('PUT')
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold">No Ruang:</label>
+                        <input id="editNoruang" type="text" name="noruang" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Blok Gedung:</label>
+                        <input id="editBlokgedung" type="text" name="blokgedung"
+                            class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Lantai:</label>
+                        <input id="editLantai" type="number" name="lantai" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Fungsi:</label>
+                        <input id="editFungsi" type="text" name="fungsi" class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Kapasitas:</label>
+                        <input id="editKapasitas" type="number" name="kapasitas"
+                            class="w-full border rounded p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold">Prodi:</label>
+                        <select id="editProdi" name="program_studi_id" class="w-full border rounded p-2">
+                            <option value="">-- Pilih Prodi --</option>
+                            @foreach ($prodiList as $prodi)
+                                <option value="{{ $prodi->id }}"
+                                    {{ old('program_studi_id', isset($ruangan) && $ruangan->program_studi_id == $prodi->id ? 'selected' : '') }}>
+                                    {{ $prodi->nama_program_studi }}
+                                </option>
+                            @endforeach
+                        </select>
+
+
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="submit"
+                        class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Simpan</button>
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                        onclick="closeEditModal()">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+<script>
+    function openCreateModal() {
+        const modal = document.getElementById('createModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
     }
-  </style>
 
-</head>
-<body class="bg-white">
-  <header class="bg-[#9BC0C0] p-0.5 flex justify-between items-center">
-    <div class="flex items-center">
-      <img alt="SI-LET Logo" class="h-24 w-24 mr-2" src="assets/silet_logo.png" />
-      <div>
-        <h1 class="text-xl font-bold">SI-LET</h1>
-        <p class="text-sm">Sistem Informasi &amp; Laporan Edukasi Terintegrasi</p>
-      </div>
-    </div>
-    <div class="flex items-center space-x-4 mr-7">
-      <img class="w-12 h-12" src="assets/user.png" alt="userlogo">
-      <div class="relative">
-        <img class="w-14 h-14 cursor-pointer" src="assets/menu-bar.png" alt="menubar" onclick="toggleDropdown()">
-        <!-- Dropdown Menu -->
-        <div id="dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg">
-          <a href="/dashboard-akademik" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
-          <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-        </div>
-      </div>
-    </div>
-  </header>
+    function closeCreateModal() {
+        const modal = document.getElementById('createModal');
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
 
-  <div class="p-4">
-    <a class="text-gray-600 text-sm" href="/dashboard-akademik">← Back</a>
-  </div>
-  <div class="flex justify-center">
-    <div class="bg-[#8281C5] p-8 rounded-lg shadow-lg w-7/12">
-      <h2 class="text-center text-2xl font-bold text-black mb-8">Penentuan Ruangan Perkuliahan</h2>
-      
-      <div class="relative mt-8 mx-60 p-4 bg-gray-300 rounded-lg shadow-inner mb-10">
-        <h3 class="text-lg font-bold text-center mb-2">Blok Gedung</h3>
-        <!-- Dropdown for selecting Blok Gedung -->
-        <select id="blokGedungFilter" onchange="filterBlokGedung()" class="p-2 border rounded-md ml-14">
-          <option value="">-- Pilih Blok Gedung --</option>
-          <option value="A">Blok A</option>
-          <option value="B">Blok B</option>
-          <option value="C">Blok C</option>
-          <option value="D">Blok D</option>
-          <option value="E">Blok E</option>
-        </select>
-      </div>
+    function openEditModal(data) {
+        const modal = document.getElementById('editModal');
+        const form = document.getElementById('editForm');
 
-      <div class="flex justify-center space-x-8">
-        <div class="container mx-auto p-4 bg-gray-100 rounded-lg shadow-md">
-          <h1 class="text-2xl font-bold text-center mb-6">Manajemen Ruang</h1>
+        // Pastikan data di-parse dengan benar
+        const ruanganData = typeof data === 'string' ? JSON.parse(data) : data;
 
-          <div class="grid grid-cols-8 gap-4 bg-gray-200 p-4 rounded-t-lg font-bold text-center">
-            <div>No Ruang</div>
-            <div>Blok Gedung</div>
-            <div>Lantai</div>
-            <div>Fungsi</div>
-            <div>Kapasitas</div>
-            <div>Prodi</div>
-            <div>Status</div>
-            <div>Aksi</div>
-          </div>
+        // Populate form fields
+        document.getElementById('editNoruang').value = ruanganData.noruang;
+        document.getElementById('editBlokgedung').value = ruanganData.blokgedung;
+        document.getElementById('editLantai').value = ruanganData.lantai;
+        document.getElementById('editFungsi').value = ruanganData.fungsi;
+        document.getElementById('editKapasitas').value = ruanganData.kapasitas;
+        document.getElementById('editProdi').value = ruanganData.program_studi_id; // Pastikan id prodi
 
-          <!-- Table Content -->
-          <div class="bg-white">
-            @foreach ($data as $item)
-              <div class="grid grid-cols-8 gap-4 p-4 border-b ruangan-row" data-blok="{{ $item->blokgedung }}">
-                <div class="text-center">{{ $item->noruang }}</div>
-                <div class="text-center">{{ $item->blokgedung }}</div>
-                <div class="text-center">{{ $item->lantai }}</div>
-                <div class="text-center">{{ $item->fungsi }}</div>
-                <div class="text-center">{{ $item->kapasitas }}</div>
-                <div class="text-center" id="prodi-{{ $item->noruang }}">{{ $item->prodi }}</div>
-                <div class="text-center">{{ $item->status }}</div>
-                <div class="text-center">
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
-                    onclick="openJurusanForm('{{ $item->noruang }}')">Pilih Jurusan</button>
-                </div>
-              </div>
-            @endforeach
-          </div>
-        </div>
+        // Set form action dynamically
+        form.action = `/ruangan/${ruanganData.id}`;
 
-        <script>
-          // Function to handle the dropdown filter
-          function filterBlokGedung() {
-            var selectedBlok = $("#blokGedungFilter").val();
+        // Show modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
 
-            $(".ruangan-row").each(function() {
-              var blokGedung = $(this).data("blok");
 
-              // Show or hide the row based on selected Blok Gedung
-              if (!selectedBlok || blokGedung === selectedBlok) {
-                $(this).show();
-              } else {
-                $(this).hide();
-              }
-            });
-          }
-
-          // Handle Jurusan selection
-          function openJurusanForm(noruang) {
-            var jurusanFormHtml = `
-              <div id="jurusanForm" class="absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 flex justify-center items-center">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                  <h3 class="text-xl font-bold mb-4">Pilih Jurusan</h3>
-                  <select id="jurusanSelect" class="p-2 border rounded-md mb-4">
-                    <option value="">-- Pilih Jurusan --</option>
-                    <option value="Informatika">Informatika</option>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
-                    <option value="Elektronika">Elektronika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                  </select>
-                  <button onclick="updateProdi('${noruang}')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update</button>
-                  <button onclick="closeJurusanForm()" class="ml-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Cancel</button>
-                </div>
-              </div>
-            `;
-            $("body").append(jurusanFormHtml);
-          }
-
-          // Close Jurusan selection form
-          function closeJurusanForm() {
-            $("#jurusanForm").remove();
-          }
-
-          // Function to update Prodi
-          function updateProdi(noruang) {
-            var selectedJurusan = $("#jurusanSelect").val();
-
-            if (!selectedJurusan) {
-              alert("Please select a Jurusan");
-              return;
-            }
-
-            // Perform the AJAX request to update the Prodi
-            $.ajax({
-              url: '/update-prodi/' + noruang,
-              type: 'POST',
-              data: {
-                _token : '{{ csrf_token() }}',
-                prodi: selectedJurusan
-              },
-              success: function(response) {
-                console.log(response);
-                if (response.message === "Prodi updated successfully!") {
-                  // Update the Prodi in the table
-                  $("#prodi-" + noruang).text(selectedJurusan);
-                  closeJurusanForm();
-                } else {
-                  alert("Error updating Prodi");
-                }
-              },
-              error: function() {
-                alert("Error updating Prodi");
-              }
-            });
-          }
-        </script>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+    function closeEditModal() {
+        const modal = document.getElementById('editModal');
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+</script>

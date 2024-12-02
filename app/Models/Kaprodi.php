@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kaprodi extends Model
 {
-    use HasFactory;
+    //
+    // Relasi ke Dosen
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'dosen_id');
+    }
 
-    protected $table = 'kaprodi'; // Nama tabel di database
-    protected $fillable = [
-        'nama',
-        'nip',
-        'fakultas',
-        'e-mail',
-    ];
+    // Relasi ke Prodi
+    public function prodi()
+    {
+        return $this->belongsTo(ProgramStudi::class, 'program_studi_id');
+    }
+
 }

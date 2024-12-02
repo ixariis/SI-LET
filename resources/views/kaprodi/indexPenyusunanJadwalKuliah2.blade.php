@@ -1,185 +1,145 @@
-<html>
- <head>
-  <title>
-   SI-LET - Penyusunan Jadwal Kuliah
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
- </head>
- <body class="bg-gray-100">
-    <header class="bg-[#9BC0C0] p-0.5 flex justify-between items-center">
-        <div class="flex items-center">
-         <img alt="SI-LET Logo" class=" h-24 w-24 mr-2" src="assets/silet_logo.png" />
-         <div>
-          <h1 class="text-xl font-bold">
-           SI-LET
-          </h1>
-          <p class="text-sm">
-           Sistem Informasi &amp; Laporan Edukasi Terintegrasi
-          </p>
-         </div>
+@extends('layout')
+
+@section('title', 'Kalender SI-LET')
+
+@section('css')
+    <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css" rel="stylesheet" />
+    <style>
+
+    </style>
+@endsection
+
+@section('konten')
+    <div class="container mx-auto">
+        <a class="text-gray-600 text-sm mb-4 inline-block" href="dashboard-kaprodi">
+            ← Back
+        </a>
+        <div class="flex overflow-hidden">
+            <div id="main-content" class="relative text-black font-poppins w-full h-full overflow-y-auto">
+                <div class="border-b-2"></div>
+                <div class="p-6 mt-4 mx-6 bg-white border border-gray-200 rounded-3xl shadow-sm">
+                    <div class="flex justify-between items-center">
+                        <h1 class="text-black font-bold">Penyusunan Jadwal Kuliah</h1>
+                        <!-- Tombol Tambah Jadwal -->
+                        <button onclick="location.href='{{ route('jadwal.create') }}'"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                            + Tambah Jadwal
+                        </button>
+                    </div>
+                </div>
+
+                <section
+                    class="relative
+                                mb-8 mt-6 mx-8 bg-white border border-gray-200 rounded-3xl shadow-sm flex">
+                    <div class="w-full max-w-7xl mx-auto px-6 lg:px-8 overflow-x-auto">
+                        <div class="grid grid-cols-8 border-t border-gray-200 sticky top-0 left-0 w-full">
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                            </div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Senin</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Selasa</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Rabu</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Kamis</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Jumat</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Sabtu</div>
+                            <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                Minggu</div>
+                        </div>
+
+                        @for ($time = 7; $time <= 21; $time++)
+                            <div class="grid grid-cols-8 border-t border-gray-200">
+                                <div class="p-3.5 flex items-center justify-center text-sm font-medium text-gray-900">
+                                    {{ $time }}:00</div>
+                                @for ($day = 1; $day <= 7; $day++)
+                                    <div class="flex flex-col h-auto p-0.5 md:p-3.5 border-r border-gray-200 transition-all hover:bg-stone-100 calendar-cell"
+                                        data-day="{{ $day - 1 }}" data-time="{{ $time }}">
+
+                                        @foreach ($jadwals as $jadwal)
+                                            @php
+                                                // Ambil jam mulai dan selesai dari jadwal
+                                                $startHour = intval(substr($jadwal->jam_mulai, 0, 2));
+                                                $endHour = intval(substr($jadwal->jam_selesai, 0, 2));
+
+                                                // Tentukan kelas warna berdasarkan kelas jadwal
+                                                $colorClass = match ($jadwal->kelas) {
+                                                    'A' => 'bg-blue-50 border-blue-600 text-blue-600',
+                                                    'B' => 'bg-red-50 border-red-600 text-red-600',
+                                                    'C' => 'bg-green-50 border-green-600 text-green-600',
+                                                    'D' => 'bg-purple-50 border-purple-600 text-purple-600',
+                                                    'E' => 'bg-yellow-50 border-yellow-600 text-yellow-600',
+                                                    default => 'bg-gray-50 border-gray-600 text-gray-600',
+                                                };
+                                            @endphp
+
+                                            <!-- Render hanya jika jam mulai sesuai dengan slot waktu -->
+                                            @if ($time == $startHour && $jadwal->hari == ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'][$day - 1])
+                                                <div class="relative group">
+                                                    <!-- Tombol Jadwal -->
+                                                    <button
+                                                        class="rounded p-1.5 border-l-2 {{ $colorClass }} w-full text-left">
+                                                        <p class="text-xs font-normal mb-px">
+                                                            {{ $jadwal->mataKuliah->nama_mk }}</p>
+                                                        <p class="text-xs font-semibold">{{ $jadwal->jam_mulai }} -
+                                                            {{ $jadwal->jam_selesai }}</p>
+                                                    </button>
+
+                                                    <!-- Tooltip untuk detail jadwal -->
+                                                    <div
+                                                        class="absolute left-full top-0 ml-0 hidden group-hover:block bg-white shadow-lg border rounded-lg p-4 w-64 z-10">
+                                                        <p class="text-sm font-semibold mb-2">Detail Jadwal</p>
+                                                        <ul class="text-sm text-gray-700 mb-3">
+                                                            <li><strong>Mata Kuliah:</strong>
+                                                                {{ $jadwal->mataKuliah->nama_mk . ' ' . $jadwal->kelas }}</li>
+                                                            <li><strong>Ruang:</strong> {{ $jadwal->ruangan }}</li>
+                                                            <li><strong>Hari:</strong> {{ $jadwal->hari }}</li>
+                                                            <li><strong>Kelas:</strong> {{ $jadwal->kelas }}</li>
+                                                            <li><strong>Kuota kelas:</strong> {{ $jadwal->kuota_kelas }}</li>
+                                                            <li><strong>Jam:</strong> {{ $jadwal->jam_mulai }} -
+                                                                {{ $jadwal->jam_selesai }}</li>
+                                                        </ul>
+
+                                                        <!-- Tombol Edit dan Hapus -->
+                                                        <div class="flex gap-2">
+                                                            <form action="{{ route('jadwal.edit', $jadwal->id) }}"
+                                                                method="GET">
+                                                                <button type="submit"
+                                                                    class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                                                                    Edit
+                                                                </button>
+                                                            </form>
+                                                            <form action="{{ route('jadwal.destroy', $jadwal->id) }}"
+                                                                method="POST"
+                                                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                                                    Hapus
+                                                                </button>
+                                                            </form>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endfor
+                            </div>
+                        @endfor
+                    </div>
+                </section>
+            </div>
         </div>
-        <div class="flex items-center space-x-4 mr-7">
-          <img class= "w-12 h-12" src="assets/user.png" alt="userlogo">
-          <div class="relative">
-           <img 
-             class="w-14 h-14 cursor-pointer" 
-             src="assets/menu-bar.png" 
-             alt="menubar" 
-             onclick="toggleDropdown()"
-           >
-           <!-- Dropdown Menu -->
-           <div id="dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg">
-             <a href="/dashboard-kaprodi" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
-             <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-           </div>
-         </div>
-       
-         <script>
-           function toggleDropdown() {
-             const dropdown = document.getElementById("dropdown");
-             dropdown.classList.toggle("hidden");
-           }
-       
-           // Menutup dropdown jika pengguna mengklik di luar elemen dropdown
-           window.onclick = function(event) {
-             const dropdown = document.getElementById("dropdown");
-             if (!event.target.closest('img')) { // Pastikan tidak mengklik icon menu bar
-               dropdown.classList.add('hidden'); // Tutup dropdown
-             }
-           }
-         </script>
-          </a>
-         </div>
-       </header>
-  <div class="p-4">
-   <a class="text-gray-600 text-sm mb-4 inline-block" href="/penyusunanjadwalkuliah-kaprodi">
-    ← Back
-   </a>
-   <h2 class="text-xl font-bold mt-4">
-    PENYUSUNAN JADWAL KULIAH
-   </h2>
-   <div class="mt-4">
-    <label class="block text-lg" for="mata-kuliah">
-     Nama Mata Kuliah :
-    </label>
-    <select class="border border-gray-300 p-2 w-80 mt-2" id="mata-kuliah">
-     <option>
-      --Pilih Mata Kuliah--
-     </option>
-    </select>
-   </div>
-   <div class="mt-6">
-    <h3 class="text-center text-lg font-bold">
-     Keamanan Jaringan Informasi
-    </h3>
-    <p class="text-center">
-     (semester 5)
-    </p>
-    <div class="overflow-x-auto mt-4">
-     <table class="min-w-full border-collapse border border-gray-400">
-      <thead>
-       <tr>
-        <th class="border border-gray-400 p-2">
-         Semester
-        </th>
-        <th class="border border-gray-400 p-2">
-         2022
-        </th>
-        <th class="border border-gray-400 p-2">
-         2023
-        </th>
-        <th class="border border-gray-400 p-2">
-         2024
-        </th>
-        <th class="border border-gray-400 p-2">
-         Persetujuan
-        </th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr>
-        <td class="border border-gray-400 p-2">
-         Total Mahasiswa
-        </td>
-        <td class="border border-gray-400 p-2">
-         156
-        </td>
-        <td class="border border-gray-400 p-2">
-         180
-        </td>
-        <td class="border border-gray-400 p-2">
-         245
-        </td>
-        <td class="border border-gray-400 p-2">
-        </td>
-       </tr>
-       <tr>
-        <td class="border border-gray-400 p-2">
-         Sudah Ambil
-        </td>
-        <td class="border border-gray-400 p-2">
-         -
-        </td>
-        <td class="border border-gray-400 p-2">
-         -
-        </td>
-        <td class="border border-gray-400 p-2">
-         -
-        </td>
-        <td class="border border-gray-400 p-2">
-        </td>
-       </tr>
-       <tr>
-        <td class="border border-gray-400 p-2">
-         Belum Ambil
-        </td>
-        <td class="border border-gray-400 p-2">
-         156
-        </td>
-        <td class="border border-gray-400 p-2">
-         180
-        </td>
-        <td class="border border-gray-400 p-2">
-         245
-        </td>
-        <td class="border border-gray-400 p-2">
-        </td>
-       </tr>
-       <tr>
-        <td class="border border-gray-400 p-2">
-         Total Ajuan
-        </td>
-        <td class="border border-gray-400 p-2">
-         Wajib
-        </td>
-        <td class="border border-gray-400 p-2">
-         80
-        </td>
-        <td class="border border-gray-400 p-2">
-        </td>
-        <td class="border border-gray-200 p-2 flex justify-center">
-         <button class="bg-red-500 text-white px-2 py-1 rounded">
-          Tolak
-         </button>
-         <button class="bg-green-500 text-white px-2 py-1 rounded ml-2">
-          Setuju
-         </button>
-        </td>
-       </tr>
-      </tbody>
-     </table>
-    </div>
-    <p class="text-red-500 text-sm mt-2">
-     *Dianjurkan memprioritaskan Mahasiswa yang mengambil Mata Kuliah Wajib di Semesternya
-    </p>
-   </div>
-   <div class="flex justify-center mt-6" >
-    <a class="bg-green-500 text-white px-4 py-2 rounded" href="/penyusunanjadwalkuliah-kaprodi3">
-     Simpan dan Kirim
-    </a>
-   </div>
-  </div>
- </body>
-</html>
+    @endsection
+
+    @section('js')
+        <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    @endsection

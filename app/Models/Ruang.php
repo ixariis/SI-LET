@@ -7,15 +7,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ruang extends Model
 {
+    //
     use HasFactory;
-     protected  $table = 'ruang';
-     protected $fillable = [
+
+    protected $table = 'ruangs'; // Pastikan nama tabel sesuai
+
+    protected $fillable = [
         'noruang',
         'blokgedung',
         'lantai',
         'fungsi',
         'kapasitas',
-        'prodi',
+        'keterangan',
+        'program_studi_id',
         'status',
-     ];
+    ];
+
+    
+        public function programStudi()
+    {
+        return $this->belongsTo(ProgramStudi::class, 'program_studi_id');
+    }
 }

@@ -2,26 +2,32 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProgramStudi;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call([
-            MahasiswaSeeder::class,
-            AkademikSeeder::class,
-            DekanSeeder::class,
-            DosenSeeder::class,
-            KaprodiSeeder::class,
-            IrsSeeder::class,
-            JadwalSeeder::class,
-            MatakuliahSeeder::class,
-            KhsSeeder::class,
-            RuangSeeder::class,
-        ]); 
+        //
+        // Panggil seeder lain jika diperlukan
+        $this->call(RoleSeeder::class);
+        $this->call(FakultasSeeder::class);
+        $this->call(ProgramStudiSeeder::class);
+        $this->call(DoswalSeeder::class);
+        $this->call(MahasiswaSeeder::class);
+        $this->call(AkademikSeeder::class);
+        $this->call(DosWalKapSeeder::class);
+        $this->call(DosWalDekSeeder::class);
+        $this->call(KaprodiSeeder::class);
+        $this->call(DekanSeeder::class);
+        $this->call(MatKulSeeder::class);
+        $this->call(RuangSeeder::class);
+        
+        
     }
 }

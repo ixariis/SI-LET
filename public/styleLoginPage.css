@@ -102,3 +102,36 @@ body {
     font-size: xx-small;
     margin-left: 60px;
 }
+
+.form-select {
+    border-width: thin;
+    border-color: black;
+    width: 300px;
+    height: 40px;
+    background-color: white;
+    margin-top: 20px;
+    text-align: left;
+    margin-left: -20px;
+    padding-left: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(../assets/arrow-down.png); /* You can create a custom dropdown icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #1252f5;
+}
+
+.alert-danger {
+    color: #f50b0b;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: -20px;
+    width: 300px;
+    text-align: center;
+}
